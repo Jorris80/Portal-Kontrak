@@ -2115,6 +2115,194 @@ label.ruas > span.bungkus-hapus {
     padding: 6px 12px;
   }
 }
+.saring-peta {
+  margin-bottom: 10px;
+}
+.saring-peta select {
+  width: auto;
+  min-width: 0;
+  flex: 1 1 160px;
+  max-width: none;
+  min-height: 40px;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+@media (pointer: coarse) {
+  .saring-peta select {
+    min-height: 44px;
+  }
+}
+.leaflet-control-layers-toggle,
+.leaflet-retina .leaflet-control-layers-toggle {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B2B3A' stroke-width='1.8' stroke-linejoin='round'%3E%3Cpath d='M12 3l9 5-9 5-9-5z'/%3E%3Cpath d='M3 13l9 5 9-5'/%3E%3C/svg%3E");
+  background-size: 24px 24px;
+}
+.leaflet-touch .leaflet-control-layers-toggle {
+  width: 44px;
+  height: 44px;
+}
+.leaflet-control-layers-expanded {
+  padding: 8px 10px;
+  font-size: 14px;
+  max-height: 60vh;
+  overflow: auto;
+}
+.leaflet-control-layers-expanded label {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+.leaflet-control-layers-expanded input {
+  margin-right: 6px;
+}
+.kendali-peta a {
+  display: grid !important;
+  place-items: center;
+  width: 34px !important;
+  height: 34px !important;
+  line-height: 1 !important;
+  color: #1B2B3A;
+}
+.leaflet-touch .kendali-peta a {
+  width: 44px !important;
+  height: 44px !important;
+}
+.leaflet-touch .leaflet-bar a,
+.leaflet-touch .leaflet-control-zoom a {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+}
+.kendali-peta .ikon {
+  width: 19px;
+  height: 19px;
+}
+.mode-ukur,
+.mode-ukur .leaflet-interactive {
+  cursor: crosshair !important;
+}
+.panel-ukur {
+  background: #fff;
+  color: #1B2B3A;
+  padding: 8px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+  max-width: min(340px, calc(100vw - 40px));
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+.panel-ukur .tombol {
+  min-height: 36px;
+}
+@media (pointer: coarse) {
+  .panel-ukur .tombol {
+    min-height: 44px;
+  }
+}
+.legenda-peta {
+  background: #fff;
+  color: #1B2B3A;
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .25);
+  font-size: 12.5px;
+  max-width: 230px;
+}
+.legenda-peta .judul-legenda {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: none;
+  font: 600 12.5px var(--sans);
+  padding: 8px 10px;
+  min-height: 36px;
+  cursor: pointer;
+  color: inherit;
+}
+.legenda-peta .judul-legenda::after {
+  content: " \25be";
+  color: #6B7280;
+}
+.legenda-peta.terlipat .judul-legenda::after {
+  content: " \25b8";
+}
+.legenda-peta.terlipat .isi-legenda {
+  display: none;
+}
+.legenda-peta .isi-legenda {
+  padding: 0 10px 8px;
+}
+.legenda-peta .isi-legenda div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 3px;
+}
+.legenda-peta i {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex: 0 0 14px;
+  display: inline-block;
+}
+.label-peta {
+  background: none;
+  border: 0;
+}
+.label-peta span {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font: 700 12px var(--sans);
+  color: #1B2B3A;
+  pointer-events: none;
+  text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff,
+    0 -1px 0 #fff,
+    0 1px 0 #fff,
+    -1px 0 0 #fff,
+    1px 0 0 #fff;
+}
+.popup-dok {
+  font-size: 13.5px;
+  line-height: 1.4;
+  min-width: 180px;
+}
+.popup-dok .mono {
+  font-size: 11px;
+  color: #5E6B72;
+}
+.popup-dok a {
+  display: inline-block;
+  margin-top: 6px;
+  font-weight: 600;
+}
+.peta-penuh {
+  position: fixed !important;
+  inset: 0 !important;
+  height: auto !important;
+  width: auto !important;
+  z-index: 75 !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+body.ada-peta-penuh {
+  overflow: hidden;
+}
+.keluar-penuh {
+  position: absolute;
+  top: calc(10px + env(safe-area-inset-top, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+}
+.label-jauh .label-peta span {
+  display: none;
+}
 </style>
 </head>
 <body>
@@ -6564,10 +6752,10 @@ var qrcode = (function() {
 });
 </script>
 <script>
-var VERSI_KLIEN = "1.0.3";
+var VERSI_KLIEN = "1.1.0";
 var S = { token: "", data: null, saya: null, halaman: "dasbor", param: {}, luring: false, waktuData: "", detail: {}, filter: {} };
 var MODE = typeof google !== "undefined" && google.script && google.script.run ? "gas" : "pwa";
-var URL_API = typeof window.CCMS_CONFIG === "object" && window.CCMS_CONFIG && window.CCMS_CONFIG.URL_API || "";
+var URL_API = typeof window.CCMS_CONFIG === "object" && window.CCMS_CONFIG && window.CCMS_CONFIG.URL_API || "https://script.google.com/macros/s/AKfycbzvc2995rzHcqwyXdsyZZJV9ICOzDYCp9PC3p2SoR2HL7h3su_4N4QOlunEUAyKdkVZ/exec";
 var ANTRIAN_BOLEH = ["kewajiban_status", "risiko_selesai"];
 var Simpan = {
   ambil: function(k, cad) {
@@ -7390,26 +7578,27 @@ function pasangHapusIsi(akar) {
     };
   });
 }
-function bukaPemilihBerkas(accept) {
+function bukaPemilihBerkas(accept, banyak) {
   return new Promise(function(ok) {
     var inp = document.createElement("input");
     inp.type = "file";
     inp.accept = accept || "";
+    if (banyak) inp.multiple = true;
     inp.style.cssText = "position:fixed;left:-9999px;top:0;opacity:0";
     document.body.appendChild(inp);
     var beres = false;
     inp.addEventListener("change", function() {
       beres = true;
-      var f = inp.files && inp.files[0];
+      var fs = Array.prototype.slice.call(inp.files || []);
       inp.remove();
-      ok(f || null);
+      ok(banyak ? fs : fs[0] || null);
     });
     window.addEventListener("focus", function fokus() {
       window.removeEventListener("focus", fokus);
       setTimeout(function() {
         if (!beres) {
           inp.remove();
-          ok(null);
+          ok(banyak ? [] : null);
         }
       }, 1500);
     });
@@ -8157,7 +8346,7 @@ function gambarDetail(el, det) {
   var d = det.dokumen, u = S.saya, ro = bacaSaja() || S.luring;
   var tabs = TAB_DETAIL.filter(function(t) {
     if (t[0] === "risiko" && u.peran === "VENDOR") return false;
-    if (t[0] === "peta" && !det.spasial) return false;
+    if (t[0] === "peta" && !det.spasial && !bisaLokasiPendamping(det)) return false;
     return true;
   });
   if (!tabs.some(function(t) {
@@ -8420,9 +8609,19 @@ function tabRisiko(el, det, d) {
         ${bisa ? H`<button class="tombol kecil" data-klik="dRisikoSelesai" data-id="${r.id}" data-batal="${r.selesai ? "1" : ""}">${r.selesai ? "Buka lagi" : "Tuntaskan"}</button>` : ""}</div>`;
   })}</div>` : H`<div class="kosong">Belum ada catatan risiko.</div>`}</div>`);
 }
+function bisaLokasiPendamping(det) {
+  var d = det.dokumen;
+  return boleh("spasial_ubah") && !bacaSaja() && !S.luring && d.status !== "DRAFT" && d.status !== "ARCHIVED" && (!det.spasial || det.spasial.pendamping === "ya");
+}
 function tabPeta(el, det, d) {
   var sp = det.spasial;
   var bisa = boleh("spasial_ubah") && !bacaSaja() && !S.luring;
+  if (!sp) {
+    return pasang(el, H`<div class="kartu"><h3>Belum ada lokasi</h3>
+      <p>Dokumen ini sudah ${d.status === "SIGNING" || STATUS_TELAAH.indexOf(d.status) >= 0 ? "diajukan" : "berlaku"}, jadi isinya terkunci. Lokasi pekerjaan tetap dapat dicatat sebagai <b>lokasi pendamping</b>:
+      tampil di peta dan tabel luas, tetapi tidak termasuk sidik isi dokumen. Setiap penambahan dan perubahan tercatat di jejak audit beserta sidik poligonnya.</p>
+      <button class="tombol utama" data-klik="dLokasiPendamping">${ikon("peta")} Tambah lokasi pendamping</button></div>`);
+  }
   pasang(el, H`<div class="kartu"><div id="petaDok" class="peta kecil"></div><div id="legendaPeta" class="kecil redup" style="margin-top:6px"></div>
     <dl class="def" style="margin-top:12px"><dt>Blok</dt><dd>${sp.kodeBlok || "\u2014"}${sp.namaBlok ? " \xB7 " + sp.namaBlok : ""}</dd>
       <dt>Luas</dt><dd>${sp.luasHa ? String(sp.luasHa).replace(".", ",") + " ha" : "\u2014"}</dd>
@@ -8431,7 +8630,11 @@ function tabPeta(el, det, d) {
       ${sp.tataGuna ? H`<dt>Tata guna</dt><dd>${sp.tataGuna}</dd>` : ""}${sp.elevasi ? H`<dt>Elevasi</dt><dd>${sp.elevasi}</dd>` : ""}
       <dt>Progres pekerjaan</dt><dd><div class="baris"><div class="progres sela" style="min-width:120px"><i style="width:${sp.progres}%"></i></div><b>${sp.progres}%</b>
         ${bisa ? H`<button class="tombol kecil" data-klik="dProgres">Perbarui</button>` : ""}</div></dd></dl>
-    ${det.geojson ? H`<button class="tombol kecil" style="margin-top:10px" data-klik="dUnduhGeo">${ikon("unduh")} Unduh GeoJSON</button>` : ""}</div>`);
+    ${sp.pendamping === "ya" ? H`<div class="pita amber kecil" style="margin-top:10px">Lokasi pendamping: ditambahkan setelah dokumen berlaku, tidak termasuk sidik isi. Riwayat perubahannya ada di jejak audit.</div>` : ""}
+    <div class="baris" style="margin-top:10px">
+      ${det.geojson ? H`<button class="tombol kecil" data-klik="dUnduhGeo">${ikon("unduh")} Unduh GeoJSON</button>` : ""}
+      ${sp.pendamping === "ya" && bisaLokasiPendamping(det) ? H`<button class="tombol kecil" data-klik="dLokasiPendamping">${ikon("pena")} Ubah lokasi pendamping</button>
+        <button class="tombol kecil bahaya" data-klik="dHapusPendamping">Hapus lokasi pendamping</button>` : ""}</div></div>`);
   setTimeout(function() {
     petaDokumen($("#petaDok"), det);
   }, 0);
@@ -8736,6 +8939,30 @@ KLIK.dProgres = function() {
     }).catch(galat);
   });
 };
+KLIK.dLokasiPendamping = function() {
+  var det = dokSekarang();
+  if (det.geojson) {
+    S.geoCache = S.geoCache || {};
+    S.geoCache[det.dokumen.id] = det.geojson;
+  }
+  ubahLokasiPendamping(det.dokumen.id).then(function(h) {
+    if (h) {
+      S.tab = "peta";
+      gambarDetail($("#konten"), S.detail[det.dokumen.id]);
+    }
+  });
+};
+KLIK.dHapusPendamping = function() {
+  var det = dokSekarang(), id = det.dokumen.id;
+  tanyaTeks("Hapus lokasi pendamping", { label: "Alasan (dicatat di jejak audit)", wajib: true, min: 5, teksYa: "Hapus", bahaya: true }).then(function(alasan) {
+    if (!alasan) return;
+    api("spasial_pendamping", { dokId: id, hapus: true, alasan }).then(function(h) {
+      terapkanHasilSpasial(id, h);
+      toast("Lokasi pendamping dihapus.");
+      gambarDetail($("#konten"), S.detail[id]);
+    }).catch(galat);
+  });
+};
 KLIK.dUnduhGeo = function() {
   var det = dokSekarang();
   unduhBlob(det.geojson, det.dokumen.id + ".geojson", "application/geo+json");
@@ -8938,7 +9165,9 @@ function renderFormulir(el) {
   if (bacaSaja()) return pasang(el, H`<div class="kosong">Aplikasi dalam mode baca saja. ${S.data.lisensi.pesan}</div>`);
   if (S.luring) return pasang(el, H`<div class="kosong">Membuat atau mengubah dokumen memerlukan koneksi (nomor dokumen diterbitkan peladen).</div>`);
   var id = S.param.id, kunci = "draf_" + (id || (S.param.induk ? "turunan_" + S.param.induk : "baru"));
-  FL = { langkah: "pokok", ai: {}, kunci, hasilAi: null };
+  FL = { langkah: LANGKAH.some(function(l) {
+    return l[0] === S.param.langkah;
+  }) ? S.param.langkah : "pokok", ai: {}, kunci, hasilAi: null };
   if (id) {
     var det = S.detail[id];
     var lanjut = function(det2) {
@@ -9055,6 +9284,7 @@ function tampilLangkah(k) {
     d.classList.toggle("tersembunyi", d.getAttribute("data-langkah") !== k);
   });
   if (k === "periksa") gambarLangkah("periksa");
+  if (k === "ttd") setTimeout(gambarPratinjauLokasi, 0);
   gambarNav();
   var nav = $("#navLangkah");
   if (nav) window.scrollTo(0, Math.max(0, nav.getBoundingClientRect().top + window.scrollY - 70));
@@ -9096,6 +9326,30 @@ function gambarLangkah(k) {
   var isi = { pokok: langkahPokok, pihak: langkahPihak, uang: langkahUang, isi: langkahIsi, ttd: langkahTtd, periksa: langkahPeriksa }[k]();
   pasang(wadah, isi);
   hitungUlang();
+  if (k === "ttd") gambarPratinjauLokasi();
+}
+function gambarPratinjauLokasi() {
+  var el = $("#pratinjauLokasi");
+  if (FL.pratinjau) {
+    try {
+      FL.pratinjau.remove();
+    } catch (e) {
+    }
+    FL.pratinjau = null;
+  }
+  if (!el || !F || !F.spasial || !el.offsetWidth || typeof L === "undefined") return;
+  var m = FL.pratinjau = L.map(el, { zoomControl: false, attributionControl: true, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, touchZoom: false, boxZoom: false, keyboard: false, tap: false });
+  m.attributionControl.setPrefix("");
+  var k = dasarAwal();
+  buatLapisDasar(k).addTo(m);
+  var sp = F.spasial;
+  if (sp.geojson) {
+    var l = L.geoJSON(JSON.parse(sp.geojson), { style: { color: "#D9A21B", weight: 3, fillOpacity: 0.2 }, interactive: false }).addTo(m);
+    m.fitBounds(l.getBounds(), { padding: [12, 12], maxZoom: 16, animate: false });
+  } else if (sp.lat !== "" && sp.lng !== "") {
+    L.circleMarker([sp.lat, sp.lng], { radius: 8, color: "#fff", weight: 2, fillColor: "#D9A21B", fillOpacity: 1 }).addTo(m);
+    m.setView([sp.lat, sp.lng], 14, { animate: false });
+  } else m.setView([-2.5, 118], 4);
 }
 function langkahPokok() {
   var grup = Object.keys(KATEGORI).map(function(kat) {
@@ -9281,22 +9535,14 @@ function langkahTtd() {
       <button type="button" class="tombol kecil" data-klik="fTtdPengguna">+ Dari daftar pengguna</button>
       ${F.pihakBPic ? H`<button type="button" class="tombol kecil" data-klik="fTtdRekanan">+ ${F.pihakBPic} (rekanan)</button>` : ""}</div>
     <h2 style="margin-top:22px">Lokasi pekerjaan (opsional)</h2>
-    <p class="kecil redup">Untuk pekerjaan lapangan: survei, pemetaan, konstruksi. Impor batas area dari GeoJSON atau KML (ekspor dari QGIS/QField/Google Earth). Shapefile: ekspor dulu ke GeoJSON di QGIS.</p>
-    <label class="centang"><input type="checkbox" id="adaSpasial" ${F.spasial ? raw("checked") : ""}> Dokumen ini punya lokasi kerja</label>
-    <div id="isiSpasial" class="${F.spasial ? "" : "tersembunyi"}">
-      <div class="grid2">
-        <label class="ruas"><span>Kode blok</span><input type="text" data-s="kodeBlok" value="${sp.kodeBlok || ""}" maxlength="60"></label>
-        <label class="ruas"><span>Nama blok / lokasi</span><input type="text" data-s="namaBlok" value="${sp.namaBlok || ""}" maxlength="200"></label>
-        <label class="ruas"><span>Kabupaten/kota</span><input type="text" data-s="kabupaten" value="${sp.kabupaten || ""}" maxlength="120"></label>
-        <label class="ruas"><span>Provinsi</span><input type="text" data-s="provinsi" value="${sp.provinsi || ""}" maxlength="120"></label>
-        <label class="ruas"><span>Luas (ha)</span><input type="text" data-s="luasHa" value="${sp.luasHa ? String(sp.luasHa).replace(".", ",") : ""}" inputmode="decimal"></label>
-        <label class="ruas"><span>Tata guna lahan</span><input type="text" data-s="tataGuna" value="${sp.tataGuna || ""}" maxlength="120"></label>
-        <label class="ruas"><span>Lintang pusat</span><input type="text" data-s="lat" value="${sp.lat || ""}" inputmode="decimal" placeholder="-1.845"></label>
-        <label class="ruas"><span>Bujur pusat</span><input type="text" data-s="lng" value="${sp.lng || ""}" inputmode="decimal" placeholder="109.97"></label>
-      </div>
-      <div class="baris"><button type="button" class="tombol kecil" data-klik="fImporGeo">${ikon("unggah")} Impor GeoJSON / KML</button>
-        ${sp.geojson ? H`<button type="button" class="tombol kecil bahaya" data-klik="fHapusGeo">Hapus poligon</button>` : ""}
-        <span class="kecil redup" id="infoGeo">${geo ? geo.teks : "Belum ada poligon."}</span></div>
+    <p class="kecil redup">Untuk pekerjaan lapangan: survei, pemetaan, konstruksi. Batas area dapat <b>digambar di peta</b>, <b>diimpor</b> dari Shapefile (.shp + .prj, termasuk UTM), KML, atau GeoJSON hasil QGIS/QField/Google Earth, atau diambil dari <b>GPS HP</b>. Lokasi pada draf ikut dikunci dalam sidik isi saat dokumen final.</p>
+    ${F.spasial ? H`<div class="baris" style="align-items:flex-start;gap:14px">
+        <div id="pratinjauLokasi" class="peta" style="height:220px;flex:1 1 260px;min-width:0"></div>
+        <dl class="def" style="flex:1 1 220px;margin:0"><dt>Blok</dt><dd>${sp.kodeBlok || "\u2014"}${sp.namaBlok ? " \xB7 " + sp.namaBlok : ""}</dd>
+          <dt>Luas</dt><dd>${sp.luasHa ? fmtHa(sp.luasHa) : "\u2014"}</dd><dt>Wilayah</dt><dd>${[sp.kabupaten, sp.provinsi].filter(Boolean).join(", ") || "\u2014"}</dd>
+          <dt>Batas</dt><dd>${geo ? geo.teks : "hanya titik " + sp.lat + ", " + sp.lng}</dd></dl></div>
+      <div class="baris" style="margin-top:8px"><button type="button" class="tombol kecil" data-klik="fLokasi">${ikon("peta")} Ubah lokasi</button>
+        <button type="button" class="tombol kecil bahaya" data-klik="fHapusLokasi">Hapus lokasi</button></div>` : H`<button type="button" class="tombol" data-klik="fLokasi">${ikon("peta")} Tambah lokasi (gambar / impor / GPS)</button>`}
     </div>`;
 }
 function langkahPeriksa() {
@@ -9378,20 +9624,6 @@ function kumpulkan() {
   baris("klausul");
   baris("kewajiban");
   baris("penandatangan");
-  var cek = $("#adaSpasial", f);
-  if (cek) {
-    if (!cek.checked) F.spasial = null;
-    else {
-      var sp = F.spasial || {};
-      $$("[data-s]", f).forEach(function(el) {
-        sp[el.getAttribute("data-s")] = el.value;
-      });
-      sp.luasHa = angkaDesimal(sp.luasHa);
-      sp.lat = sp.lat === "" ? "" : angkaDesimal(sp.lat);
-      sp.lng = sp.lng === "" ? "" : angkaDesimal(sp.lng);
-      F.spasial = sp;
-    }
-  }
 }
 function angkaDesimal(s) {
   var t = String(s || "").trim().replace(/\s/g, "");
@@ -9524,36 +9756,23 @@ KLIK.fTtdRekanan = function() {
   F.penandatangan.push({ nama: F.pihakBPic, jabatan: F.pihakBJabatan, organisasi: F.pihakBNama, email: u ? u.email : "", metode: u ? "INTERNAL" : F.metodeTtd });
   gambarLangkah("ttd");
 };
-document.addEventListener("change", function(e) {
-  if (e.target && e.target.id === "adaSpasial") {
-    $("#isiSpasial").classList.toggle("tersembunyi", !e.target.checked);
-    if (e.target.checked && !F.spasial) F.spasial = { progres: 0 };
-  }
-});
-KLIK.fHapusGeo = function() {
+KLIK.fLokasi = function() {
   kumpulkan();
-  if (F.spasial) F.spasial.geojson = "";
-  gambarLangkah("ttd");
+  editorLokasi(F.spasial ? Object.assign({}, F.spasial) : null, { judul: "Lokasi pekerjaan" }).then(function(sp) {
+    if (!sp) return;
+    F.spasial = Object.assign({ progres: F.spasial && F.spasial.progres || 0 }, sp);
+    gambarLangkah("ttd");
+    simpanLokalTunda();
+  });
 };
-KLIK.fImporGeo = function() {
-  kumpulkan();
-  bukaPemilihBerkas(".geojson,.json,.kml,application/geo+json,application/json,application/vnd.google-earth.kml+xml").then(function(f) {
-    if (!f) return;
-    if (f.size > 5 * 1024 * 1024) throw new Error("Berkas batas area maksimal 5 MB. Sederhanakan poligon di QGIS.");
-    return bacaTeks(f).then(function(teks) {
-      var geom = /\.kml$/i.test(f.name) || /<kml/i.test(teks.slice(0, 500)) ? kmlKeGeom(teks) : geojsonKeGeom(teks);
-      var info = infoGeo(JSON.stringify(geom));
-      F.spasial = F.spasial || { progres: 0 };
-      F.spasial.geojson = JSON.stringify(geom);
-      F.spasial.luasHa = Math.round(info.luasHa * 100) / 100;
-      F.spasial.lat = Math.round(info.lat * 1e6) / 1e6;
-      F.spasial.lng = Math.round(info.lng * 1e6) / 1e6;
-      if (!F.spasial.namaBlok) F.spasial.namaBlok = f.name.replace(/\.[^.]+$/, "");
-      gambarLangkah("ttd");
-      simpanLokalTunda();
-      toast("Poligon diimpor: " + info.teks);
-    });
-  }).catch(galat);
+KLIK.fHapusLokasi = function() {
+  konfirmasi("Hapus lokasi?", "Batas area dan koordinat dokumen ini akan dihapus dari draf.", "Hapus", true).then(function(y) {
+    if (!y) return;
+    kumpulkan();
+    F.spasial = null;
+    gambarLangkah("ttd");
+    simpanLokalTunda();
+  });
 };
 function geojsonKeGeom(teks) {
   var g;
@@ -9597,38 +9816,50 @@ function kmlKeGeom(teks) {
   if (!poli.length) throw new Error("Tidak ada Polygon di KML.");
   return poli.length === 1 ? { type: "Polygon", coordinates: poli[0] } : { type: "MultiPolygon", coordinates: poli };
 }
+var ELIPS = (function() {
+  var a = 6378137, f = 1 / 298.257223563, e2 = f * (2 - f), e = Math.sqrt(e2);
+  function q(s) {
+    return (1 - e2) * (s / (1 - e2 * s * s) - Math.log((1 - e * s) / (1 + e * s)) / (2 * e));
+  }
+  var qp = q(1);
+  return { Rq: a * Math.sqrt(qp / 2), sinBeta: function(latDeg) {
+    return Math.max(-1, Math.min(1, q(Math.sin(latDeg * Math.PI / 180)) / qp));
+  } };
+})();
 function luasCincin(c) {
-  var R = 6378137, rad = Math.PI / 180, a = 0, n = c.length;
+  var n = c.length, a = 0, rad = Math.PI / 180;
   if (n < 3) return 0;
   for (var i = 0; i < n; i++) {
     var p1 = c[i], p2 = c[(i + 1) % n];
-    a += (p2[0] - p1[0]) * rad * (2 + Math.sin(p1[1] * rad) + Math.sin(p2[1] * rad));
+    a += (p2[0] - p1[0]) * rad * (2 + ELIPS.sinBeta(p1[1]) + ELIPS.sinBeta(p2[1]));
   }
-  return Math.abs(a * R * R / 2);
+  return Math.abs(a * ELIPS.Rq * ELIPS.Rq / 2);
 }
 function infoGeo(teks) {
   var g = typeof teks === "string" ? JSON.parse(teks) : teks;
   var poli = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
-  var luas = 0, titik = 0, sx = 0, sy = 0;
+  var luas = 0, titik = 0, sx = 0, sy = 0, sw = 0;
   poli.forEach(function(p) {
     p.forEach(function(c, i) {
       var l = luasCincin(c);
       luas += i === 0 ? l : -l;
       titik += c.length;
     });
-    p[0].forEach(function(q) {
-      sx += q[0];
-      sy += q[1];
-    });
+    var luar = p[0], n = luar.length, tutup = n > 1 && luar[0][0] === luar[n - 1][0] && luar[0][1] === luar[n - 1][1] ? n - 1 : n;
+    var w = luasCincin(luar) || 1, x = 0, y = 0;
+    for (var k = 0; k < tutup; k++) {
+      x += luar[k][0];
+      y += luar[k][1];
+    }
+    sx += w * x / tutup;
+    sy += w * y / tutup;
+    sw += w;
   });
-  var nLuar = poli.reduce(function(s, p) {
-    return s + p[0].length;
-  }, 0);
   var ha = luas / 1e4;
   return {
     luasHa: ha,
-    lat: sy / nLuar,
-    lng: sx / nLuar,
+    lat: sy / sw,
+    lng: sx / sw,
     titik,
     teks: poli.length + " poligon, " + titik + " titik, \xB1" + ha.toFixed(2).replace(".", ",") + " ha"
   };
@@ -9764,9 +9995,29 @@ function simpanForm() {
 }
 var petaAktif = null;
 var WARNA_STATUS = { hijau: "#2F5D50", biru: "#2A4D9B", amber: "#C48A0E", merah: "#B3261E", abu: "#6B7280" };
-function warnaDok(d) {
-  return WARNA_STATUS[(LABEL_STATUS[d.status] || ["", "abu"])[1]];
-}
+var DASAR_PUBLIK = {
+  osm: {
+    nama: "Peta Jalan (OpenStreetMap)",
+    url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    maks: 19,
+    atr: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+  },
+  satelit: {
+    nama: "Citra Satelit (Esri)",
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    maks: 19,
+    atr: "Citra &copy; Esri, Maxar, Earthstar Geographics"
+  },
+  topo: {
+    nama: "Topografi (OpenTopoMap)",
+    url: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+    maks: 17,
+    atr: '&copy; OpenStreetMap contributors, SRTM | &copy; <a href="https://opentopomap.org" target="_blank" rel="noopener">OpenTopoMap</a> (CC-BY-SA)'
+  }
+};
+var TEMA_PETA = { status: "Status dokumen", kategori: "Kategori dokumen", progres: "Progres pekerjaan", berakhir: "Sisa masa berlaku" };
+var TEMA_PENDEK = { status: "Status", kategori: "Kategori", progres: "Progres", berakhir: "Masa berlaku" };
+var ZOOM_LABEL = 12;
 function hapusPeta() {
   if (petaAktif) {
     var m = petaAktif;
@@ -9778,47 +10029,440 @@ function hapusPeta() {
     }
   }
 }
-function buatPetaDasar(el, opsi) {
+function pilihanDasar() {
+  var p = S.data && S.data.peta || { jenis: "kosong" }, daftar = [{ kunci: "kosong", nama: "Tanpa peta dasar" }];
+  if (p.publik !== false) Object.keys(DASAR_PUBLIK).forEach(function(k) {
+    daftar.push({ kunci: k, nama: DASAR_PUBLIK[k].nama });
+  });
+  if ((p.jenis === "xyz" || p.jenis === "wms") && p.url) daftar.push({ kunci: "kustom", nama: "Kustom: " + (p.atribusi || (p.jenis === "wms" ? "WMS instansi" : "layanan instansi")) });
+  return daftar;
+}
+function dasarAwal() {
+  var ada = pilihanDasar().map(function(x) {
+    return x.kunci;
+  });
+  var simpan = Simpan.ambil("petaDasar", "");
+  if (ada.indexOf(simpan) >= 0) return simpan;
+  var j = (S.data.peta || {}).jenis;
+  if ((j === "xyz" || j === "wms") && ada.indexOf("kustom") >= 0) return "kustom";
+  if (j === "osm" && ada.indexOf("osm") >= 0) return "osm";
+  return "kosong";
+}
+function buatLapisDasar(k) {
+  var p = S.data.peta || {};
+  if (DASAR_PUBLIK[k]) return L.tileLayer(DASAR_PUBLIK[k].url, { maxZoom: 20, maxNativeZoom: DASAR_PUBLIK[k].maks, attribution: DASAR_PUBLIK[k].atr });
+  if (k === "kustom") {
+    if (p.jenis === "wms") return L.tileLayer.wms(p.url, { layers: p.lapisan, format: "image/png", transparent: false, attribution: esc(p.atribusi || "") });
+    return L.tileLayer(p.url, { maxZoom: 21, attribution: esc(p.atribusi || "") });
+  }
+  return L.layerGroup();
+}
+function jarakM(a, b) {
+  var R = 63710088e-1, r = Math.PI / 180, dLa = (b[0] - a[0]) * r, dLo = (b[1] - a[1]) * r;
+  var h = Math.sin(dLa / 2) * Math.sin(dLa / 2) + Math.cos(a[0] * r) * Math.cos(b[0] * r) * Math.sin(dLo / 2) * Math.sin(dLo / 2);
+  return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
+}
+function fmtJarak(m) {
+  return m >= 1e3 ? (m / 1e3).toFixed(2).replace(".", ",") + " km" : Math.round(m) + " m";
+}
+function fmtHa(ha) {
+  return (Math.round(ha * 100) / 100).toString().replace(".", ",") + " ha";
+}
+function dalamCincin(x, y, c) {
+  var di = false;
+  for (var i = 0, j = c.length - 1; i < c.length; j = i++) {
+    if (c[i][1] > y !== c[j][1] > y && x < (c[j][0] - c[i][0]) * (y - c[i][1]) / (c[j][1] - c[i][1]) + c[i][0]) di = !di;
+  }
+  return di;
+}
+function titikDalamGeom(lng, lat, g) {
+  var poli = g.type === "Polygon" ? [g.coordinates] : g.type === "MultiPolygon" ? g.coordinates : [];
+  return poli.some(function(p) {
+    return dalamCincin(lng, lat, p[0]) && !p.slice(1).some(function(h) {
+      return dalamCincin(lng, lat, h);
+    });
+  });
+}
+function buatPeta(el, opsi) {
+  opsi = opsi || {};
   if (typeof L === "undefined") {
     pasang(el, H`<div class="kosong">Pustaka peta tidak termuat.</div>`);
     return null;
   }
-  var m = L.map(el, { zoomControl: true, attributionControl: true, preferCanvas: false, tap: false });
-  var p = S.data.peta || { jenis: "kosong" };
-  var atr = p.atribusi || "";
-  try {
-    if (p.jenis === "osm") L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors' }).addTo(m);
-    else if (p.jenis === "xyz" && p.url) L.tileLayer(p.url, { maxZoom: 20, attribution: esc(atr) }).addTo(m);
-    else if (p.jenis === "wms" && p.url) L.tileLayer.wms(p.url, { layers: p.lapisan, format: "image/png", transparent: false, attribution: esc(atr) }).addTo(m);
-  } catch (e) {
-  }
+  var m = L.map(el, { zoomControl: true, preferCanvas: false, tap: false });
   m.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>');
+  var ctx = { m, el, kunciDasar: dasarAwal(), pendengarDasar: [], sibuk: false };
+  var dasar = {};
+  pilihanDasar().forEach(function(x) {
+    var l = buatLapisDasar(x.kunci);
+    l._kunci = x.kunci;
+    dasar[x.nama] = l;
+    if (x.kunci === ctx.kunciDasar) l.addTo(m);
+  });
+  ctx.kendaliLapis = L.control.layers(dasar, {}, { collapsed: true, position: "topright" }).addTo(m);
+  m.on("baselayerchange", function(e) {
+    ctx.kunciDasar = e.layer._kunci;
+    Simpan.taruh("petaDasar", ctx.kunciDasar);
+    ctx.pendengarDasar.forEach(function(f) {
+      f(ctx.kunciDasar);
+    });
+  });
+  ctx.saatDasar = function(f) {
+    ctx.pendengarDasar.push(f);
+  };
+  ctx.tambahOverlay = function(nama, lapis, aktif) {
+    if (aktif !== false) lapis.addTo(m);
+    ctx.kendaliLapis.addOverlay(lapis, nama);
+    return lapis;
+  };
   L.control.scale({ imperial: false }).addTo(m);
   m.setView([-2.5, 118], 5);
-  return m;
+  var Kendali = L.Control.extend({ options: { position: "topleft" }, onAdd: function() {
+    var d = L.DomUtil.create("div", "leaflet-bar kendali-peta");
+    var tombol = [["penuh", "Layar penuh", '<path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/>']];
+    if (!opsi.tanpaGps) tombol.push(["gps", "Lokasi saya (GPS HP)", '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7"/>']);
+    if (!opsi.tanpaUkur) tombol.push(["ukur", "Ukur jarak & luas", '<path d="M3 17L17 3l4 4L7 21z"/><path d="M7 13l2 2M10 10l2 2M13 7l2 2"/>']);
+    tombol.push(["pusat", "Tampilkan semua", '<path d="M3 12h4M17 12h4M12 3v4M12 17v4"/><rect x="8" y="8" width="8" height="8" rx="1"/>']);
+    d.innerHTML = tombol.map(function(t) {
+      return '<a href="#" role="button" data-k="' + t[0] + '" title="' + t[1] + '" aria-label="' + t[1] + '"><svg class="ikon" viewBox="0 0 24 24">' + t[2] + "</svg></a>";
+    }).join("");
+    L.DomEvent.disableClickPropagation(d);
+    L.DomEvent.on(d, "click", function(e) {
+      var a = e.target.closest("a");
+      if (!a) return;
+      L.DomEvent.preventDefault(e);
+      ({
+        penuh: function() {
+          layarPenuh(ctx);
+        },
+        gps: function() {
+          lokasiSaya(ctx, opsi.saatGps);
+        },
+        ukur: function() {
+          mulaiUkur(ctx);
+        },
+        pusat: function() {
+          if (ctx.pusatkan) ctx.pusatkan();
+        }
+      })[a.getAttribute("data-k")]();
+    });
+    return d;
+  } });
+  new Kendali().addTo(m);
+  ctx.mulaiGambar = function(o) {
+    return mulaiUkur(ctx, o);
+  };
+  setTimeout(function() {
+    try {
+      m.invalidateSize();
+    } catch (e) {
+    }
+  }, 60);
+  return ctx;
 }
-function catatanPetaDasar() {
-  var p = S.data.peta || {};
-  if (p.jenis === "kosong" || !p.jenis) return "Peta dasar tidak diaktifkan (hanya batas area). " + (S.saya.peran === "SUPER_ADMIN" ? "Atur di Setelan > Peta dasar." : "");
-  if (S.luring) return "Luring: ubin peta dasar mungkin tidak tampil.";
-  return "";
+function layarPenuh(ctx) {
+  var el = ctx.el, penuh = !el.classList.contains("peta-penuh");
+  el.classList.toggle("peta-penuh", penuh);
+  document.body.classList.toggle("ada-peta-penuh", penuh);
+  var keluar2 = el.querySelector(".keluar-penuh");
+  if (penuh && !keluar2) {
+    keluar2 = document.createElement("button");
+    keluar2.type = "button";
+    keluar2.className = "tombol keluar-penuh";
+    keluar2.textContent = "Keluar layar penuh";
+    L.DomEvent.disableClickPropagation(keluar2);
+    keluar2.onclick = function() {
+      layarPenuh(ctx);
+    };
+    el.appendChild(keluar2);
+  } else if (!penuh && keluar2) keluar2.remove();
+  setTimeout(function() {
+    ctx.m.invalidateSize();
+  }, 80);
+}
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") {
+    var p = document.querySelector(".peta-penuh .keluar-penuh");
+    if (p) p.click();
+  }
+});
+function lokasiSaya(ctx, saatGps) {
+  if (!navigator.geolocation) return toast("Perangkat tidak menyediakan GPS.", "galat");
+  toast("Mencari lokasi GPS\u2026");
+  navigator.geolocation.getCurrentPosition(function(p) {
+    var ll = [p.coords.latitude, p.coords.longitude], ak = Math.round(p.coords.accuracy);
+    if (ctx.gps) ctx.m.removeLayer(ctx.gps);
+    ctx.gps = L.layerGroup([
+      L.circle(ll, { radius: ak, color: "#2A4D9B", weight: 1, fillOpacity: 0.12, interactive: false }),
+      L.circleMarker(ll, { radius: 7, color: "#fff", weight: 2, fillColor: "#2A4D9B", fillOpacity: 1, interactive: false })
+    ]).addTo(ctx.m);
+    ctx.m.setView(ll, Math.max(ctx.m.getZoom(), 16), { animate: false });
+    ctx.posisiGps = { ll, akurasi: ak };
+    if (saatGps) saatGps(ll, ak);
+    else toast("Posisi Anda (ketelitian \xB1" + ak + " m).");
+  }, function(e) {
+    toast(e.code === 1 ? "Izin lokasi ditolak. Aktifkan izin lokasi untuk situs ini di peramban." : "GPS tidak mendapat posisi: " + e.message, "galat", 6e3);
+  }, { enableHighAccuracy: true, timeout: 2e4, maximumAge: 5e3 });
+}
+function mulaiUkur(ctx, o) {
+  o = o || null;
+  if (ctx.ukur) ctx.ukur.hentikan();
+  var m = ctx.m, titik = [];
+  var garis = L.polyline([], { color: "#D9A21B", weight: 3, dashArray: "6 5", interactive: false }).addTo(m);
+  var bidang = L.polygon([], { color: "#D9A21B", weight: 0, fillOpacity: 0.18, interactive: false }).addTo(m);
+  var simpul = L.layerGroup().addTo(m);
+  var Panel = L.Control.extend({ options: { position: "bottomleft" }, onAdd: function() {
+    var d = L.DomUtil.create("div", "panel-ukur");
+    L.DomEvent.disableClickPropagation(d);
+    L.DomEvent.disableScrollPropagation(d);
+    return d;
+  } });
+  var panel = new Panel().addTo(m), kotak = panel.getContainer();
+  ctx.sibuk = true;
+  m.closePopup();
+  m.getContainer().classList.add("mode-ukur");
+  var dblAktif = m.doubleClickZoom.enabled();
+  m.doubleClickZoom.disable();
+  function hitung() {
+    var j = 0;
+    for (var i = 1; i < titik.length; i++) j += jarakM(titik[i - 1], titik[i]);
+    var tutup = titik.length >= 3 ? jarakM(titik[titik.length - 1], titik[0]) : 0;
+    var luas = titik.length >= 3 ? luasCincin(titik.map(function(t) {
+      return [t[1], t[0]];
+    })) / 1e4 : 0;
+    return { jarak: j, keliling: j + tutup, luas };
+  }
+  function gambar() {
+    garis.setLatLngs(titik);
+    bidang.setLatLngs(titik.length >= 3 ? titik : []);
+    simpul.clearLayers();
+    titik.forEach(function(t, i) {
+      L.circleMarker(t, { radius: i === 0 ? 6 : 4, color: "#1B2B3A", weight: 2, fillColor: "#fff", fillOpacity: 1, interactive: false }).addTo(simpul);
+    });
+    var h = hitung();
+    kotak.innerHTML = "<b>" + esc(o ? o.judul || "Gambar batas area" : "Ukur jarak & luas") + '</b><div class="kecil" data-info>' + (titik.length ? titik.length + " titik \xB7 jarak " + fmtJarak(h.jarak) + (titik.length >= 3 ? " \xB7 keliling " + fmtJarak(h.keliling) + " \xB7 <b>luas " + fmtHa(h.luas) + "</b>" : "") : "Ketuk peta untuk menambah titik" + (o ? ', atau berjalan di batas area dan tekan "+ Titik GPS" di tiap sudut.' : ".")) + '</div><div class="baris" style="margin-top:6px">' + (o ? '<button type="button" class="tombol kecil" data-u="gps">+ Titik GPS</button>' : "") + '<button type="button" class="tombol kecil" data-u="urung"' + (titik.length ? "" : " disabled") + '>Urungkan</button><button type="button" class="tombol kecil" data-u="hapus"' + (titik.length ? "" : " disabled") + ">Hapus</button>" + (o ? '<button type="button" class="tombol kecil utama" data-u="selesai"' + (titik.length >= 3 ? "" : " disabled") + '>Selesai</button><button type="button" class="tombol kecil" data-u="batal">Batal</button>' : '<button type="button" class="tombol kecil utama" data-u="batal">Tutup</button>') + "</div>";
+  }
+  function klik(e) {
+    titik.push([e.latlng.lat, e.latlng.lng]);
+    gambar();
+  }
+  m.on("click", klik);
+  kotak.addEventListener("click", function(e) {
+    var b = e.target.closest("[data-u]");
+    if (!b || b.disabled) return;
+    e.preventDefault();
+    var u = b.getAttribute("data-u");
+    if (u === "urung") {
+      titik.pop();
+      gambar();
+    }
+    if (u === "hapus") {
+      titik = [];
+      gambar();
+    }
+    if (u === "batal") {
+      hentikan();
+      if (o && o.batal) o.batal();
+    }
+    if (u === "selesai") {
+      var hasil = titik.slice();
+      hentikan();
+      o.selesai(hasil);
+    }
+    if (u === "gps") {
+      if (!navigator.geolocation) return toast("Perangkat tidak menyediakan GPS.", "galat");
+      b.disabled = true;
+      b.textContent = "Mencari GPS\u2026";
+      navigator.geolocation.getCurrentPosition(function(p) {
+        if (p.coords.accuracy > 30) toast("Ketelitian GPS \xB1" + Math.round(p.coords.accuracy) + " m \u2014 kurang baik untuk batas. Tunggu sinyal membaik bila perlu.", "galat", 6e3);
+        titik.push([p.coords.latitude, p.coords.longitude]);
+        m.setView([p.coords.latitude, p.coords.longitude], Math.max(m.getZoom(), 17), { animate: false });
+        gambar();
+      }, function(er) {
+        toast("GPS gagal: " + er.message, "galat");
+        gambar();
+      }, { enableHighAccuracy: true, timeout: 2e4, maximumAge: 0 });
+    }
+  });
+  function hentikan() {
+    m.off("click", klik);
+    [garis, bidang, simpul].forEach(function(l) {
+      m.removeLayer(l);
+    });
+    panel.remove();
+    ctx.sibuk = false;
+    ctx.ukur = null;
+    m.getContainer().classList.remove("mode-ukur");
+    if (dblAktif) m.doubleClickZoom.enable();
+  }
+  ctx.ukur = { hentikan, titik: function() {
+    return titik;
+  } };
+  gambar();
+  return ctx.ukur;
+}
+function warnaDok(d, tema, sp) {
+  tema = tema || "status";
+  if (tema === "kategori") return { PERJANJIAN: "#2A4D9B", SURAT_OPERASIONAL: "#2F5D50", DOKUMEN_LEGAL_PENDUKUNG: "#8A5A9B" }[d.kategori] || "#6B7280";
+  if (tema === "progres") {
+    var p = Number(sp && sp.progres) || 0;
+    return p >= 100 ? "#1F5134" : p >= 75 ? "#4C8C5A" : p >= 50 ? "#C48A0E" : p >= 25 ? "#D96C1B" : "#B3261E";
+  }
+  if (tema === "berakhir") {
+    if (STATUS_BERLAKU.indexOf(d.status) < 0) return "#9AA3A8";
+    var n = selisihHari(hariIni(), akhirBerlaku(d));
+    return n < 0 ? "#B3261E" : n <= 30 ? "#D96C1B" : n <= 90 ? "#C48A0E" : "#2F5D50";
+  }
+  return WARNA_STATUS[(LABEL_STATUS[d.status] || ["", "abu"])[1]];
+}
+function legendaTema(tema) {
+  if (tema === "kategori") return [["#2A4D9B", "Perjanjian"], ["#2F5D50", "Surat operasional"], ["#8A5A9B", "Dokumen legal pendukung"]];
+  if (tema === "progres") return [["#B3261E", "0\u201324%"], ["#D96C1B", "25\u201349%"], ["#C48A0E", "50\u201374%"], ["#4C8C5A", "75\u201399%"], ["#1F5134", "100%"]];
+  if (tema === "berakhir") return [["#B3261E", "Sudah lewat"], ["#D96C1B", "\u2264 30 hari"], ["#C48A0E", "31\u201390 hari"], ["#2F5D50", "> 90 hari"], ["#9AA3A8", "Belum/tidak berlaku"]];
+  return [[WARNA_STATUS.hijau, "Berlaku"], [WARNA_STATUS.amber, "Tanda tangan / segera berakhir"], [WARNA_STATUS.biru, "Dalam telaah"], [WARNA_STATUS.abu, "Draf / ditutup"], [WARNA_STATUS.merah, "Ditolak"]];
+}
+function pasangLegenda(ctx, tema) {
+  if (ctx.legenda) ctx.legenda.remove();
+  var terlipat = Simpan.ambil("legendaTerlipat", window.innerWidth < 600);
+  var Leg = L.Control.extend({ options: { position: "bottomright" }, onAdd: function() {
+    var d = L.DomUtil.create("div", "legenda-peta" + (terlipat ? " terlipat" : ""));
+    d.innerHTML = '<button type="button" class="judul-legenda" aria-expanded="' + !terlipat + '">Legenda: ' + esc(TEMA_PETA[tema]) + '</button><div class="isi-legenda">' + legendaTema(tema).map(function(x) {
+      return '<div><i style="background:' + x[0] + '"></i>' + esc(x[1]) + "</div>";
+    }).join("") + '<div><i style="background:transparent;border:2px dashed #555"></i>Lokasi pendamping</div></div>';
+    L.DomEvent.disableClickPropagation(d);
+    d.querySelector(".judul-legenda").onclick = function() {
+      var t = d.classList.toggle("terlipat");
+      this.setAttribute("aria-expanded", String(!t));
+      Simpan.taruh("legendaTerlipat", t);
+    };
+    return d;
+  } });
+  ctx.legenda = new Leg().addTo(ctx.m);
+}
+function gambarDokumenDiPeta(ctx, item, tema) {
+  ctx.item = item;
+  ctx.tema = tema;
+  ctx.batas = ctx.batas || ctx.tambahOverlay("Batas area", L.featureGroup());
+  ctx.titik = ctx.titik || ctx.tambahOverlay("Titik lokasi", L.featureGroup());
+  ctx.label = ctx.label || ctx.tambahOverlay("Label blok", L.layerGroup(), Simpan.ambil("labelPeta", true));
+  if (!ctx._pantau) {
+    ctx._pantau = true;
+    ctx.m.on("overlayadd overlayremove", function(e) {
+      if (e.layer === ctx.label) Simpan.taruh("labelPeta", e.type === "overlayadd");
+    });
+    ctx.saatDasar(function() {
+      gambarDokumenDiPeta(ctx, ctx.item, ctx.tema);
+    });
+    var aturLabel = function() {
+      ctx.m.getContainer().classList.toggle("label-jauh", ctx.m.getZoom() < ZOOM_LABEL);
+    };
+    ctx.m.on("zoomend", aturLabel);
+    aturLabel();
+  }
+  ctx.batas.clearLayers();
+  ctx.titik.clearLayers();
+  ctx.label.clearLayers();
+  ctx.indeks = {};
+  var kontras = ctx.kunciDasar === "satelit" || ctx.kunciDasar === "kustom";
+  item.forEach(function(it) {
+    var d = it.d, sp = it.sp, w = warnaDok(d, tema, sp), lapis = null, g = null;
+    if (it.geo) {
+      try {
+        g = JSON.parse(it.geo);
+      } catch (e) {
+        g = null;
+      }
+    }
+    var popup = function() {
+      return popupDok(d, sp);
+    };
+    if (g) {
+      if (kontras) L.geoJSON(g, { style: { color: "#fff", weight: 5, opacity: 0.9, fill: false }, interactive: false }).addTo(ctx.batas);
+      lapis = L.geoJSON(g, { style: { color: w, weight: kontras ? 2.5 : 2, fillColor: w, fillOpacity: kontras ? 0.12 : 0.2, dashArray: sp.pendamping === "ya" ? "6 4" : null } }).addTo(ctx.batas);
+    } else if (sp.lat || sp.lng) {
+      lapis = L.circleMarker([sp.lat, sp.lng], { radius: 8, color: "#fff", weight: 2, fillColor: w, fillOpacity: 0.95, dashArray: sp.pendamping === "ya" ? "3 3" : null }).addTo(ctx.titik);
+    }
+    if (!lapis) return;
+    lapis.on("click", function(e) {
+      if (ctx.sibuk) return;
+      L.DomEvent.stop(e);
+      L.popup({ maxWidth: 280 }).setLatLng(e.latlng).setContent(popup()).openOn(ctx.m);
+    });
+    var pusat = g ? lapis.getBounds().getCenter() : L.latLng(sp.lat, sp.lng);
+    L.marker(pusat, { interactive: false, keyboard: false, icon: L.divIcon({ className: "label-peta", html: "<span>" + esc(sp.kodeBlok || d.nomor) + "</span>", iconSize: [0, 0] }) }).addTo(ctx.label);
+    ctx.indeks[d.id] = { lapis, pusat, g, d, sp, popup };
+  });
+  ctx.pusatkan = function() {
+    var b = L.latLngBounds([]);
+    Object.keys(ctx.indeks).forEach(function(k) {
+      var x = ctx.indeks[k];
+      if (x.g) b.extend(x.lapis.getBounds());
+      else b.extend(x.pusat);
+    });
+    if (b.isValid()) ctx.m.fitBounds(b, { padding: [24, 24], maxZoom: 16, animate: false });
+  };
+}
+function popupDok(d, sp) {
+  var n = STATUS_BERLAKU.indexOf(d.status) >= 0 ? selisihHari(hariIni(), akhirBerlaku(d)) : null;
+  return H`<div class="popup-dok"><div class="mono">${d.nomor}</div><b>${d.judul}</b>
+    <div style="margin:6px 0">${cap(d.status)} ${sp.pendamping === "ya" ? pil("lokasi pendamping", "amber") : ""}</div>
+    <div class="kecil">${sp.kodeBlok || ""}${sp.namaBlok ? " \xB7 " + sp.namaBlok : ""}${sp.luasHa ? " \xB7 " + fmtHa(sp.luasHa) : ""}<br>
+    Progres ${sp.progres || 0}%${n !== null ? " \xB7 " + (n < 0 ? "lewat " + -n + " hari" : "berakhir " + n + " hari lagi") : ""}${d.pihakBNama ? H`<br>${d.pihakBNama}` : ""}</div>
+    <a href="#" data-klik="bukaDok" data-id="${d.id}">Buka dokumen</a></div>`.__raw;
+}
+function fokusDok(ctx, id) {
+  var x = ctx.indeks && ctx.indeks[id];
+  if (!x) return;
+  if (x.g) ctx.m.fitBounds(x.lapis.getBounds(), { padding: [30, 30], maxZoom: 17, animate: false });
+  else ctx.m.setView(x.pusat, 16, { animate: false });
+  L.popup({ maxWidth: 280 }).setLatLng(x.pusat).setContent(x.popup()).openOn(ctx.m);
+}
+function laporGps(ctx, ll) {
+  var semua = Object.keys(ctx.indeks || {}).map(function(k) {
+    return ctx.indeks[k];
+  });
+  var dalam = semua.filter(function(x) {
+    return x.g && titikDalamGeom(ll[1], ll[0], x.g);
+  });
+  if (dalam.length) return toast("Anda berada di dalam area " + dalam.map(function(x) {
+    return (x.sp.kodeBlok || "") + " (" + x.d.nomor + ")";
+  }).join(", ") + ".", "baik", 7e3);
+  var dekat = null;
+  semua.forEach(function(x) {
+    var j = jarakM(ll, [x.pusat.lat, x.pusat.lng]);
+    if (!dekat || j < dekat.j) dekat = { j, x };
+  });
+  toast(dekat ? "Di luar semua area. Terdekat: " + (dekat.x.sp.kodeBlok || dekat.x.d.nomor) + " (\xB1" + fmtJarak(dekat.j) + " dari pusatnya)." : "Posisi ditemukan.", "", 7e3);
 }
 function renderPeta(el) {
-  var mode = S.filter.peta || "berlaku";
-  pasang(el, H`<div class="kartu"><div class="baris" style="margin-bottom:10px">
-      ${[["berlaku", "Berlaku"], ["telaah", "Dalam proses"], ["semua", "Semua"]].map(function(o) {
+  var f = S.filter;
+  var mode = f.peta || "berlaku", tema = f.temaPeta || "status", proyek = f.petaProyek || "";
+  var bisaTambah = !bacaSaja() && !S.luring && (boleh("spasial_ubah") || boleh("dok_buat"));
+  pasang(el, H`<div class="kartu">
+      <div class="baris saring-peta">
+        ${[["berlaku", "Berlaku"], ["telaah", "Dalam proses"], ["semua", "Semua"]].map(function(o) {
     return H`<button class="tombol kecil ${mode === o[0] ? "utama" : ""}" data-klik="modePeta" data-m="${o[0]}">${o[1]}</button>`;
   })}
-      <span class="sela"></span><span class="kecil redup" id="jmlPeta"></span></div>
-    <div id="petaUtama" class="peta"></div>
-    <div class="legenda">${[["hijau", "Berlaku"], ["amber", "Tanda tangan / segera berakhir"], ["biru", "Dalam telaah"], ["abu", "Draf / ditutup"], ["merah", "Ditolak"]].map(function(x) {
-    return H`<span><i style="background:${WARNA_STATUS[x[0]]}"></i>${x[1]}</span>`;
-  })}</div>
-    <p class="kecil redup" style="margin-bottom:0">${catatanPetaDasar()}</p></div>
+        <select id="petaProyek" aria-label="Proyek"><option value="">Semua proyek</option>${S.data.proyek.map(function(p) {
+    return H`<option value="${p.id}" ${proyek === p.id ? raw("selected") : ""}>${p.id}</option>`;
+  })}</select>
+        <select id="petaTema" aria-label="Tema warna">${Object.keys(TEMA_PETA).map(function(k) {
+    return H`<option value="${k}" ${tema === k ? raw("selected") : ""}>Warna: ${TEMA_PENDEK[k]}</option>`;
+  })}</select>
+        <select id="petaFokus" aria-label="Fokus ke lokasi"><option value="">Fokus ke lokasi</option></select>
+        ${bisaTambah ? H`<button class="tombol kecil" data-klik="petaTambah">+ Tambah lokasi</button>` : ""}
+      </div>
+      <div id="petaUtama" class="peta"></div>
+      <p class="kecil redup" style="margin:8px 0 0" id="catatanPeta"></p></div>
     <div class="kartu" id="daftarPeta"></div>`);
-  var m = petaAktif = buatPetaDasar($("#petaUtama"));
-  if (!m) return;
+  var ctx = buatPeta($("#petaUtama"), { saatGps: function(ll) {
+    laporGps(ctx, ll);
+  } });
+  if (!ctx) return;
+  petaAktif = ctx.m;
+  S.ctxPeta = ctx;
   var dok = S.data.dokumen.filter(function(d) {
+    if (proyek && d.proyekId !== proyek) return false;
     if (mode === "berlaku") return STATUS_BERLAKU.indexOf(d.status) >= 0;
     if (mode === "telaah") return STATUS_TELAAH.indexOf(d.status) >= 0 || d.status === "DRAFT";
     return true;
@@ -9830,86 +10474,413 @@ function renderPeta(el) {
   var ada = dok.filter(function(d) {
     return sp[d.id];
   });
-  $("#jmlPeta").textContent = ada.length + " lokasi";
+  var geoPerlu = ada.some(function(d) {
+    return sp[d.id].adaGeo === "ya" && !(S.geoCache && S.geoCache[d.id]);
+  });
+  pasang($("#petaFokus"), H`<option value="">Fokus ke lokasi (${ada.length})</option>${ada.map(function(d) {
+    return H`<option value="${d.id}">${sp[d.id].kodeBlok || d.nomor} \u2014 ${d.judul.slice(0, 40)}</option>`;
+  })}`);
   function gambar(geo) {
-    if (!petaAktif || petaAktif !== m) return;
-    var grup = L.featureGroup().addTo(m);
-    ada.forEach(function(d) {
-      var s = sp[d.id], w = warnaDok(d), lapis = null;
-      var popup = H`<b>${d.nomor}</b><br>${d.judul}<br><span style="color:#666">${s.kodeBlok || ""} ${s.luasHa ? "\xB7 " + String(s.luasHa).replace(".", ",") + " ha" : ""} \u00b7 progres ${s.progres}%</span><br>
-        <a href="#" data-klik="bukaDok" data-id="${d.id}">Buka dokumen</a>`.__raw;
-      if (geo && geo[d.id]) {
-        try {
-          lapis = L.geoJSON(JSON.parse(geo[d.id]), { style: { color: w, weight: 2, fillColor: w, fillOpacity: 0.18 } });
-        } catch (e) {
-          lapis = null;
-        }
-      }
-      if (!lapis && (s.lat || s.lng)) lapis = L.circleMarker([s.lat, s.lng], { radius: 8, color: "#fff", weight: 2, fillColor: w, fillOpacity: 0.95 });
-      if (lapis) lapis.bindPopup(popup).addTo(grup);
-    });
-    try {
-      if (grup.getLayers().length) m.fitBounds(grup.getBounds(), { padding: [24, 24], maxZoom: 15, animate: false });
-    } catch (e) {
-    }
+    if (petaAktif !== ctx.m) return;
+    gambarDokumenDiPeta(ctx, ada.map(function(d) {
+      return { d, sp: sp[d.id], geo: geo && geo[d.id] };
+    }), tema);
+    ctx.pusatkan();
   }
+  pasangLegenda(ctx, tema);
   gambar(S.geoCache || null);
-  if (!S.luring && ada.some(function(d) {
-    return sp[d.id].adaGeo === "ya";
-  })) {
-    api("geo_semua", {}, { diam: true }).then(function(g) {
-      S.geoCache = g;
-      if (petaAktif === m) {
-        m.eachLayer(function(l) {
-          if (l instanceof L.FeatureGroup) m.removeLayer(l);
-        });
-        gambar(g);
-      }
-    }).catch(function() {
-    });
-  }
-  pasang($("#daftarPeta"), ada.length ? H`<h3>Lokasi pekerjaan</h3><div class="tabel-bungkus" style="margin-top:8px"><table><thead><tr><th>Dokumen</th><th>Blok</th><th class="angka-sel">Luas</th><th>Progres</th></tr></thead><tbody>
+  if (!S.luring && geoPerlu) api("geo_semua", {}, { diam: true }).then(function(g) {
+    S.geoCache = g;
+    gambar(g);
+  }).catch(function() {
+  });
+  $("#catatanPeta").textContent = (ctx.kunciDasar === "kosong" ? "Peta dasar kosong: pilih Peta Jalan, Citra Satelit, atau Topografi lewat ikon lapisan di kanan atas. " : "") + "Garis putus-putus = lokasi pendamping (ditambahkan setelah dokumen berlaku, di luar sidik isi).";
+  $("#petaProyek").onchange = function() {
+    f.petaProyek = this.value;
+    render();
+  };
+  $("#petaTema").onchange = function() {
+    f.temaPeta = this.value;
+    render();
+  };
+  $("#petaFokus").onchange = function() {
+    if (this.value) fokusDok(ctx, this.value);
+  };
+  var total = ada.reduce(function(a, d) {
+    return a + (Number(sp[d.id].luasHa) || 0);
+  }, 0);
+  pasang($("#daftarPeta"), ada.length ? H`<h3>Lokasi pekerjaan</h3><div class="tabel-bungkus" style="margin-top:8px"><table><thead><tr><th>Dokumen</th><th>Blok</th><th class="angka-sel">Luas</th><th>Progres</th><th></th></tr></thead><tbody>
     ${ada.map(function(d) {
     var s = sp[d.id];
-    return H`<tr data-klik="bukaDok" data-id="${d.id}" style="cursor:pointer"><td><b>${d.nomor}</b><br><span class="kecil">${d.judul}</span></td><td class="kecil">${s.kodeBlok}<br>${[s.kabupaten, s.provinsi].filter(Boolean).join(", ")}</td>
-      <td class="angka-sel">${s.luasHa ? String(s.luasHa).replace(".", ",") + " ha" : "\u2014"}</td><td style="min-width:110px"><div class="progres"><i style="width:${s.progres}%"></i></div><span class="kecil">${s.progres}%</span></td></tr>`;
+    return H`<tr><td><b>${d.nomor}</b><br><span class="kecil">${d.judul}</span></td>
+      <td class="kecil">${s.kodeBlok || "\u2014"}${s.pendamping === "ya" ? H` ${pil("pendamping", "amber")}` : ""}<br>${[s.kabupaten, s.provinsi].filter(Boolean).join(", ")}</td>
+      <td class="angka-sel">${s.luasHa ? fmtHa(s.luasHa) : "\u2014"}</td><td style="min-width:110px"><div class="progres"><i style="width:${s.progres}%"></i></div><span class="kecil">${s.progres}%</span></td>
+      <td style="white-space:nowrap"><button class="tombol kecil" data-klik="petaFokus" data-id="${d.id}">Lihat</button> <button class="tombol kecil" data-klik="bukaDok" data-id="${d.id}">Buka</button></td></tr>`;
   })}
-    </tbody><tfoot><tr><td colspan="2">Total luas</td><td class="angka-sel">${ada.reduce(function(a, d) {
-    return a + (Number(sp[d.id].luasHa) || 0);
-  }, 0).toFixed(2).replace(".", ",")} ha</td><td></td></tr></tfoot></table></div>` : H`<div class="kosong">Belum ada dokumen dengan lokasi pada filter ini. Tambahkan lokasi di langkah "Penandatangan & lokasi" saat membuat dokumen.</div>`);
+    </tbody><tfoot><tr><td colspan="2">Total luas</td><td class="angka-sel">${fmtHa(total)}</td><td colspan="2"></td></tr></tfoot></table></div>` : H`<div class="kosong">Belum ada dokumen dengan lokasi pada filter ini.${bisaTambah ? ' Tekan "+ Tambah lokasi".' : ""}</div>`);
 }
 KLIK.modePeta = function(t) {
   S.filter.peta = t.getAttribute("data-m");
   render();
 };
-function petaDokumen(el, det) {
-  if (!el) return;
-  hapusPeta();
-  var m = petaAktif = buatPetaDasar(el);
-  if (!m) return;
-  var sp = det.spasial, w = warnaDok(det.dokumen), lapis = null;
-  if (det.geojson) {
-    try {
-      lapis = L.geoJSON(JSON.parse(det.geojson), { style: { color: w, weight: 2, fillColor: w, fillOpacity: 0.2 } }).addTo(m);
-    } catch (e) {
-      lapis = null;
+KLIK.petaFokus = function(t) {
+  if (S.ctxPeta) {
+    fokusDok(S.ctxPeta, t.getAttribute("data-id"));
+    $("#petaUtama").scrollIntoView({ block: "center" });
+  }
+};
+KLIK.petaTambah = function() {
+  var sp = {};
+  (S.data.spasial || []).forEach(function(s) {
+    sp[s.dokId] = s;
+  });
+  var draf = boleh("dok_buat") ? S.data.dokumen.filter(function(d) {
+    return d.status === "DRAFT" && (d.dibuatOleh === S.saya.id || S.saya.peran === "SUPER_ADMIN");
+  }) : [];
+  var berlaku = boleh("spasial_ubah") ? S.data.dokumen.filter(function(d) {
+    return d.status !== "DRAFT" && d.status !== "ARCHIVED" && (!sp[d.id] || sp[d.id].pendamping === "ya");
+  }) : [];
+  if (!draf.length && !berlaku.length) return modal({ judul: "Tambah lokasi", isi: H`<p>Tidak ada dokumen yang bisa diberi lokasi. Lokasi ditambahkan pada draf (langkah "Penandatangan & lokasi"), atau sebagai lokasi pendamping pada dokumen yang sudah diajukan/berlaku oleh Admin, Manajer Proyek, atau Legal.</p>` });
+  modal({
+    judul: "Tambah lokasi ke dokumen",
+    isi: H`<label class="ruas"><span>Pilih dokumen</span><select name="id">
+      ${draf.length ? H`<optgroup label="Draf saya (lokasi mengikat)">${draf.map(function(d) {
+      return H`<option value="${d.id}">${d.nomor} \u2014 ${d.judul.slice(0, 50)}</option>`;
+    })}</optgroup>` : ""}
+      ${berlaku.length ? H`<optgroup label="Sudah diajukan/berlaku (lokasi pendamping)">${berlaku.map(function(d) {
+      return H`<option value="${d.id}">${d.nomor} \u2014 ${d.judul.slice(0, 50)}${sp[d.id] ? " (ubah)" : ""}</option>`;
+    })}</optgroup>` : ""}
+    </select></label>
+    <p class="kecil redup">Draf: lokasi menjadi bagian isi dokumen dan ikut dikunci saat final. Dokumen yang sudah diajukan/berlaku: lokasi dicatat sebagai <b>pendamping</b> \u2014 tidak mengubah sidik isi, tetapi setiap perubahan tercatat di jejak audit.</p>`,
+    tombol: [{ teks: "Batal", nilai: null }, { teks: "Lanjut", kelas: "utama", kirim: true }]
+  }).then(function(r) {
+    if (!r) return;
+    var d = S.data.dokumen.filter(function(x) {
+      return x.id === r.data.id;
+    })[0];
+    if (d.status === "DRAFT") return ke("buat", { id: d.id, langkah: "ttd" });
+    ubahLokasiPendamping(d.id);
+  });
+};
+function ubahLokasiPendamping(id) {
+  var awal = null, geo = (S.geoCache || {})[id] || S.detail[id] && S.detail[id].geojson || "";
+  (S.data.spasial || []).forEach(function(s) {
+    if (s.dokId === id) awal = Object.assign({}, s, { geojson: geo });
+  });
+  var d = S.data.dokumen.filter(function(x) {
+    return x.id === id;
+  })[0];
+  return editorLokasi(awal, {
+    judul: "Lokasi pendamping \u2014 " + d.nomor,
+    alasan: true,
+    simpan: function(sp, alasan) {
+      return api("spasial_pendamping", { dokId: id, spasial: sp, alasan });
     }
+  }).then(function(h) {
+    if (!h) return null;
+    terapkanHasilSpasial(id, h);
+    toast("Lokasi pendamping disimpan dan dicatat di jejak audit.", "baik");
+    if (S.halaman === "peta") render();
+    return h;
+  });
+}
+function terapkanHasilSpasial(id, h) {
+  S.data.spasial = (S.data.spasial || []).filter(function(s) {
+    return s.dokId !== id;
+  }).concat(h.spasial ? [h.spasial] : []);
+  S.geoCache = S.geoCache || {};
+  if (h.geojson) S.geoCache[id] = h.geojson;
+  else delete S.geoCache[id];
+  if (S.detail[id]) {
+    S.detail[id].spasial = h.spasial;
+    S.detail[id].geojson = h.geojson;
   }
-  if (lapis) m.fitBounds(lapis.getBounds(), { padding: [20, 20], maxZoom: 16, animate: false });
-  else if (sp.lat || sp.lng) {
-    L.circleMarker([sp.lat, sp.lng], { radius: 9, color: "#fff", weight: 2, fillColor: w, fillOpacity: 1 }).addTo(m);
-    m.setView([sp.lat, sp.lng], 13, { animate: false });
+  simpanCache_();
+}
+function editorLokasi(awal, opsi) {
+  opsi = opsi || {};
+  var sp = Object.assign({ kodeBlok: "", namaBlok: "", kabupaten: "", provinsi: "", tataGuna: "", luasHa: 0, lat: "", lng: "", geojson: "" }, awal || {});
+  var ctx = null, lapisGeo = null, penanda = null;
+  function perbaruiInfo(f) {
+    var i = sp.geojson ? infoGeo(sp.geojson) : null;
+    $("#infoLokasi", f).textContent = i ? i.teks : sp.lat !== "" && sp.lng !== "" ? "Hanya titik: " + sp.lat + ", " + sp.lng : "Belum ada batas area atau titik.";
+    $("#hapusBatas", f).disabled = !sp.geojson;
   }
-  var lg = $("#legendaPeta");
-  if (lg) lg.textContent = catatanPetaDasar();
-  setTimeout(function() {
-    if (petaAktif === m) {
+  function gambarUlang(f, pusatkan) {
+    if (!ctx) return;
+    if (lapisGeo) {
+      ctx.m.removeLayer(lapisGeo);
+      lapisGeo = null;
+    }
+    if (penanda) {
+      ctx.m.removeLayer(penanda);
+      penanda = null;
+    }
+    if (sp.geojson) {
+      lapisGeo = L.geoJSON(JSON.parse(sp.geojson), { style: { color: "#D9A21B", weight: 3, fillOpacity: 0.2 }, interactive: false }).addTo(ctx.m);
+      if (pusatkan) ctx.m.fitBounds(lapisGeo.getBounds(), { padding: [20, 20], maxZoom: 17, animate: false });
+    } else if (sp.lat !== "" && sp.lng !== "") {
+      penanda = L.circleMarker([sp.lat, sp.lng], { radius: 8, color: "#fff", weight: 2, fillColor: "#D9A21B", fillOpacity: 1, interactive: false }).addTo(ctx.m);
+      if (pusatkan) ctx.m.setView([sp.lat, sp.lng], 15, { animate: false });
+    }
+    perbaruiInfo(f);
+  }
+  function terapkanGeom(f, geom, nama) {
+    var i = infoGeo(geom);
+    sp.geojson = JSON.stringify(geom);
+    sp.luasHa = Math.round(i.luasHa * 100) / 100;
+    sp.lat = Math.round(i.lat * 1e6) / 1e6;
+    sp.lng = Math.round(i.lng * 1e6) / 1e6;
+    if (nama && !f.namaBlok.value) f.namaBlok.value = nama;
+    f.luasHa.value = String(sp.luasHa).replace(".", ",");
+    f.lat.value = sp.lat;
+    f.lng.value = sp.lng;
+    if (i.lng < 94 || i.lng > 142 || i.lat < -12 || i.lat > 7) toast("Perhatian: pusat area (" + i.lat.toFixed(4) + ", " + i.lng.toFixed(4) + ") di luar wilayah Indonesia. Periksa zona UTM/proyeksi atau lintang-bujur tertukar.", "galat", 9e3);
+    gambarUlang(f, true);
+  }
+  return modal({
+    judul: opsi.judul || "Atur lokasi pekerjaan",
+    lebar: true,
+    tanpaFokus: true,
+    isi: H`
+      <div class="baris" style="margin-bottom:8px">
+        <button type="button" class="tombol kecil" id="lokGambar">${ikon("pena")} Gambar batas di peta</button>
+        <button type="button" class="tombol kecil" id="lokImpor">${ikon("unggah")} Impor SHP / KML / GeoJSON</button>
+        <button type="button" class="tombol kecil" id="lokGps">Titik dari GPS HP</button>
+        <button type="button" class="tombol kecil bahaya" id="hapusBatas">Hapus batas</button></div>
+      <div id="petaEditor" class="peta" style="height:min(46vh,420px)"></div>
+      <p class="kecil" id="infoLokasi" style="margin:6px 0 10px"></p>
+      <div class="grid2">
+        <label class="ruas"><span>Kode blok</span><input name="kodeBlok" type="text" maxlength="60" value="${sp.kodeBlok}"></label>
+        <label class="ruas"><span>Nama blok / lokasi</span><input name="namaBlok" type="text" maxlength="200" value="${sp.namaBlok}"></label>
+        <label class="ruas"><span>Kabupaten/kota</span><input name="kabupaten" type="text" maxlength="120" value="${sp.kabupaten}"></label>
+        <label class="ruas"><span>Provinsi</span><input name="provinsi" type="text" maxlength="120" value="${sp.provinsi}"></label>
+        <label class="ruas"><span>Tata guna lahan</span><input name="tataGuna" type="text" maxlength="120" value="${sp.tataGuna}"></label>
+        <label class="ruas"><span>Luas (ha) \u2014 otomatis dari batas</span><input name="luasHa" type="text" inputmode="decimal" value="${sp.luasHa ? String(sp.luasHa).replace(".", ",") : ""}"></label>
+        <label class="ruas"><span>Lintang pusat</span><input name="lat" type="text" inputmode="decimal" value="${sp.lat}" placeholder="-1.845"></label>
+        <label class="ruas"><span>Bujur pusat</span><input name="lng" type="text" inputmode="decimal" value="${sp.lng}" placeholder="109.97"></label>
+        ${opsi.alasan ? H`<label class="ruas" style="grid-column:1/-1"><span>Catatan untuk jejak audit</span><input name="alasan" type="text" maxlength="500" placeholder="mis. hasil plot lapangan tim survei 12 Sep"></label>` : ""}
+      </div>`,
+    tombol: [{ teks: "Batal", nilai: null }, { teks: "Simpan lokasi", kelas: "utama", kirim: true }],
+    saatBuka: function(f) {
+      setTimeout(function() {
+        ctx = buatPeta($("#petaEditor", f), { saatGps: function(ll, ak) {
+          toast("Posisi GPS \xB1" + ak + " m.");
+        } });
+        if (!ctx) return;
+        gambarUlang(f, true);
+        if (!sp.geojson && (sp.lat === "" || sp.lng === "")) {
+          var lain = (S.data.spasial || []).filter(function(s) {
+            return s.lat || s.lng;
+          });
+          if (lain.length) ctx.m.setView([lain[0].lat, lain[0].lng], 12, { animate: false });
+        }
+      }, 40);
+      $("#lokGambar", f).onclick = function() {
+        if (!ctx) return;
+        ctx.mulaiGambar({ judul: "Gambar batas area", selesai: function(t) {
+          var cincin = t.map(function(x) {
+            return [Math.round(x[1] * 1e7) / 1e7, Math.round(x[0] * 1e7) / 1e7];
+          });
+          cincin.push(cincin[0].slice());
+          terapkanGeom(f, { type: "Polygon", coordinates: [cincin] });
+        } });
+        toast("Ketuk sudut-sudut batas di peta, lalu tekan Selesai.");
+      };
+      $("#lokImpor", f).onclick = function() {
+        bukaPemilihBerkas(".geojson,.json,.kml,.shp,.prj,.dbf,.shx,.cpg", true).then(function(berkas) {
+          if (!berkas || !berkas.length) return;
+          return imporBerkasLokasi(berkas).then(function(h) {
+            terapkanGeom(f, h.geom, h.nama);
+            toast("Diimpor: " + infoGeo(h.geom).teks + (h.catatan ? " \xB7 " + h.catatan : ""), "baik", 6e3);
+          });
+        }).catch(galat);
+      };
+      $("#lokGps", f).onclick = function() {
+        if (!navigator.geolocation) return toast("Perangkat tidak menyediakan GPS.", "galat");
+        toast("Mencari lokasi GPS\u2026");
+        navigator.geolocation.getCurrentPosition(function(p) {
+          sp.lat = Math.round(p.coords.latitude * 1e6) / 1e6;
+          sp.lng = Math.round(p.coords.longitude * 1e6) / 1e6;
+          f.lat.value = sp.lat;
+          f.lng.value = sp.lng;
+          if (!sp.geojson) gambarUlang(f, true);
+          else ctx.m.setView([sp.lat, sp.lng], 16, { animate: false });
+          toast("Titik pusat diisi dari GPS (\xB1" + Math.round(p.coords.accuracy) + " m).");
+        }, function(e) {
+          toast("GPS gagal: " + e.message, "galat");
+        }, { enableHighAccuracy: true, timeout: 2e4, maximumAge: 0 });
+      };
+      $("#hapusBatas", f).onclick = function() {
+        sp.geojson = "";
+        gambarUlang(f, false);
+      };
+      ["lat", "lng"].forEach(function(k) {
+        f[k].addEventListener("change", function() {
+          sp[k] = this.value === "" ? "" : angkaDesimal(this.value);
+          if (!sp.geojson) gambarUlang(f, true);
+        });
+      });
+    },
+    periksa: function(h) {
+      var dt = h.data;
+      ["kodeBlok", "namaBlok", "kabupaten", "provinsi", "tataGuna"].forEach(function(k) {
+        sp[k] = String(dt[k] || "").trim();
+      });
+      sp.luasHa = angkaDesimal(dt.luasHa);
+      sp.lat = dt.lat === "" ? "" : angkaDesimal(dt.lat);
+      sp.lng = dt.lng === "" ? "" : angkaDesimal(dt.lng);
+      if (!sp.geojson && (sp.lat === "" || sp.lng === "")) throw new Error("Gambar/impor batas area, atau isi lintang & bujur titik pusat.");
+      if (sp.lat !== "" && (sp.lat < -90 || sp.lat > 90 || sp.lng < -180 || sp.lng > 180)) throw new Error("Lintang harus -90..90 dan bujur -180..180 (derajat desimal).");
+      var hasil = {};
+      ["kodeBlok", "namaBlok", "kabupaten", "provinsi", "tataGuna", "luasHa", "lat", "lng", "geojson", "elevasi", "progres"].forEach(function(k) {
+        if (sp[k] !== void 0) hasil[k] = sp[k];
+      });
+      return opsi.simpan ? opsi.simpan(hasil, dt.alasan || "") : hasil;
+    }
+  }).then(function(r) {
+    if (ctx) {
       try {
-        m.invalidateSize({ animate: false });
+        ctx.m.remove();
       } catch (e) {
       }
     }
-  }, 120);
+    return r ? r.hasil : null;
+  });
+}
+function imporBerkasLokasi(berkas) {
+  berkas = Array.prototype.slice.call(berkas);
+  var cari = function(ext) {
+    return berkas.filter(function(f2) {
+      return new RegExp("\\." + ext + "$", "i").test(f2.name);
+    })[0];
+  };
+  for (var i = 0; i < berkas.length; i++) if (berkas[i].size > 8 * 1024 * 1024) return Promise.reject(new Error(berkas[i].name + " lebih dari 8 MB. Sederhanakan poligon di QGIS (Vector > Geometry > Simplify)."));
+  var shp = cari("shp");
+  if (shp) {
+    var prj = cari("prj");
+    var bacaBuf = function(f2) {
+      return f2.arrayBuffer ? f2.arrayBuffer() : new Promise(function(ok) {
+        var r = new FileReader();
+        r.onload = function() {
+          ok(r.result);
+        };
+        r.readAsArrayBuffer(f2);
+      });
+    };
+    return Promise.all([bacaBuf(shp), prj ? bacaTeks(prj) : Promise.resolve("")]).then(function(x) {
+      var h = shpKeGeom(x[0], x[1]);
+      if (!h.perluZona) return { geom: h.geom, nama: shp.name.replace(/\.shp$/i, ""), catatan: h.catatan + (prj ? "" : " (tanpa .prj, dianggap WGS 84)") };
+      return tanyaTeks("Zona UTM", {
+        label: "Zona UTM (mis. 48S, 49S, 50S)",
+        wajib: true,
+        min: 2,
+        teksYa: "Pakai",
+        pengantar: "Berkas .prj tidak ikut dipilih dan koordinatnya dalam meter. Masukkan zona UTM data ini (WGS 84 / DGN95). Salah zona satu langkah menggeser lokasi ratusan kilometer \u2014 lebih aman pilih .shp dan .prj bersamaan.",
+        periksa: function(t) {
+          var m = /^(\d{1,2})([NS])$/i.exec(t.replace(/\s+/g, ""));
+          if (!m || +m[1] < 1 || +m[1] > 60) throw new Error("Format: angka 1-60 diikuti N/S, mis. 49S.");
+          return t;
+        }
+      }).then(function(z) {
+        if (!z) throw new Error("Impor dibatalkan.");
+        var m = /^(\d{1,2})([NS])$/i.exec(z.replace(/\s+/g, ""));
+        var h2 = shpKeGeom(x[0], "UTM zone " + m[1] + m[2].toUpperCase());
+        return { geom: h2.geom, nama: shp.name.replace(/\.shp$/i, ""), catatan: h2.catatan };
+      });
+    });
+  }
+  var f = cari("geojson") || cari("json") || cari("kml");
+  if (!f) return Promise.reject(new Error("Pilih berkas .geojson, .kml, atau .shp (sertakan .prj dari folder yang sama)."));
+  return bacaTeks(f).then(function(teks) {
+    var geom = /\.kml$/i.test(f.name) || /<kml/i.test(teks.slice(0, 500)) ? kmlKeGeom(teks) : geojsonKeGeom(teks);
+    return { geom, nama: f.name.replace(/\.[^.]+$/, ""), catatan: "" };
+  });
+}
+function utmKeWgs(x, y, zona, selatan) {
+  var a = 6378137, f = 1 / 298.257223563, e2 = f * (2 - f), k0 = 0.9996, ep2 = e2 / (1 - e2);
+  x -= 5e5;
+  if (selatan) y -= 1e7;
+  var mu = y / k0 / (a * (1 - e2 / 4 - 3 * e2 * e2 / 64 - 5 * e2 * e2 * e2 / 256));
+  var e1 = (1 - Math.sqrt(1 - e2)) / (1 + Math.sqrt(1 - e2));
+  var p1 = mu + (3 * e1 / 2 - 27 * Math.pow(e1, 3) / 32) * Math.sin(2 * mu) + (21 * e1 * e1 / 16 - 55 * Math.pow(e1, 4) / 32) * Math.sin(4 * mu) + 151 * Math.pow(e1, 3) / 96 * Math.sin(6 * mu) + 1097 * Math.pow(e1, 4) / 512 * Math.sin(8 * mu);
+  var s = Math.sin(p1), c = Math.cos(p1), t = Math.tan(p1);
+  var N1 = a / Math.sqrt(1 - e2 * s * s), R1 = a * (1 - e2) / Math.pow(1 - e2 * s * s, 1.5), C1 = ep2 * c * c, T1 = t * t, D = x / (N1 * k0);
+  var lat = p1 - N1 * t / R1 * (D * D / 2 - (5 + 3 * T1 + 10 * C1 - 4 * C1 * C1 - 9 * ep2) * Math.pow(D, 4) / 24 + (61 + 90 * T1 + 298 * C1 + 45 * T1 * T1 - 252 * ep2 - 3 * C1 * C1) * Math.pow(D, 6) / 720);
+  var lon = (D - (1 + 2 * T1 + C1) * Math.pow(D, 3) / 6 + (5 - 2 * C1 + 28 * T1 - 3 * C1 * C1 + 8 * ep2 + 24 * T1 * T1) * Math.pow(D, 5) / 120) / c;
+  return [(zona - 1) * 6 - 180 + 3 + lon * 180 / Math.PI, lat * 180 / Math.PI];
+}
+function shpKeGeom(buf, prj) {
+  var dv = new DataView(buf);
+  if (buf.byteLength < 100 || dv.getInt32(0, false) !== 9994) throw new Error("Berkas .shp tidak sah.");
+  var tipe = dv.getInt32(32, true);
+  if ([5, 15, 25].indexOf(tipe) < 0) throw new Error("Shapefile harus bertipe poligon (berkas ini bertipe " + ({ 1: "titik", 3: "garis", 8: "multi-titik", 11: "titik Z", 13: "garis Z" }[tipe] || tipe) + ").");
+  var konversi = null, catatan = "";
+  prj = String(prj || "");
+  var mz = /UTM[_ ]?zone[_ ]?(\d{1,2})\s*([NS])?/i.exec(prj);
+  if (mz) {
+    var sel = mz[2] ? /^S/i.test(mz[2]) : /South/i.test(prj) || /false_northing"?\s*,\s*10000000/i.test(prj);
+    konversi = function(p) {
+      return utmKeWgs(p[0], p[1], +mz[1], sel);
+    };
+    catatan = "dikonversi dari UTM " + mz[1] + (sel ? "S" : "N");
+  } else if (/PROJCS/i.test(prj)) {
+    throw new Error("Proyeksi .prj belum didukung (" + (/PROJCS\["([^"]+)"/.exec(prj) || ["", "tidak dikenal"])[1] + "). Ekspor ulang di QGIS ke EPSG:4326 (WGS 84) atau UTM.");
+  }
+  var rekaman = [], off = 100, contoh = null;
+  while (off + 8 <= buf.byteLength) {
+    var pjg = dv.getInt32(off + 4, false) * 2, isi = off + 8;
+    if (isi + 4 > buf.byteLength) break;
+    if (dv.getInt32(isi, true) !== 0) {
+      var nBag = dv.getInt32(isi + 36, true), nTitik = dv.getInt32(isi + 40, true), awalTitik = isi + 44 + 4 * nBag, bag = [], rek = [];
+      for (var i = 0; i < nBag; i++) bag.push(dv.getInt32(isi + 44 + 4 * i, true));
+      for (var b = 0; b < nBag; b++) {
+        var akhir = b + 1 < nBag ? bag[b + 1] : nTitik, c = [];
+        for (var j = bag[b]; j < akhir; j++) c.push([dv.getFloat64(awalTitik + 16 * j, true), dv.getFloat64(awalTitik + 16 * j + 8, true)]);
+        if (c.length >= 4) {
+          rek.push(c);
+          if (!contoh) contoh = c[0];
+        }
+      }
+      if (rek.length) rekaman.push(rek);
+    }
+    off = isi + pjg;
+  }
+  if (!rekaman.length) throw new Error("Shapefile tidak berisi poligon.");
+  if (!konversi && (Math.abs(contoh[0]) > 180 || Math.abs(contoh[1]) > 90)) return { perluZona: true };
+  var poli = [];
+  rekaman.forEach(function(rek2) {
+    var terakhir = null;
+    rek2.forEach(function(c2) {
+      var luas = 0;
+      for (var i2 = 0; i2 < c2.length; i2++) {
+        var p = c2[i2], q = c2[(i2 + 1) % c2.length];
+        luas += p[0] * q[1] - q[0] * p[1];
+      }
+      var cc = c2.map(function(p2) {
+        var w = konversi ? konversi(p2) : p2;
+        return [Math.round(w[0] * 1e7) / 1e7, Math.round(w[1] * 1e7) / 1e7];
+      });
+      if (luas <= 0 || !terakhir) {
+        terakhir = [cc];
+        poli.push(terakhir);
+      } else terakhir.push(cc);
+    });
+  });
+  return { geom: poli.length === 1 ? { type: "Polygon", coordinates: poli[0] } : { type: "MultiPolygon", coordinates: poli }, catatan };
+}
+function petaDokumen(el, det) {
+  if (!el) return;
+  hapusPeta();
+  var ctx = buatPeta(el, { saatGps: function(ll) {
+    laporGps(ctx, ll);
+  } });
+  if (!ctx) return;
+  petaAktif = ctx.m;
+  gambarDokumenDiPeta(ctx, [{ d: det.dokumen, sp: det.spasial, geo: det.geojson }], "status");
+  ctx.pusatkan();
+  var lg = $("#legendaPeta");
+  if (lg) lg.textContent = ctx.kunciDasar === "kosong" ? "Pilih peta dasar (jalan, satelit, topografi) lewat ikon lapisan di kanan atas peta." : "";
 }
 var BAGIAN_SETELAN = [
   ["profil", "Profil & sandi", null],
@@ -10249,17 +11220,18 @@ function sAmbang(el) {
 function sPeta(el) {
   var p = S.data.peta || { jenis: "kosong" };
   pasang(el, H`<form class="kartu" id="fPeta" novalidate><h2>Peta dasar</h2>
-    <p class="kecil redup">Bawaan: tanpa peta dasar (hanya batas area) \u2014 tidak ada data lokasi pengguna yang dikirim ke pihak ketiga. Aktifkan salah satu bila perlu.</p>
-    <label class="ruas"><span>Sumber</span><select name="jenis" id="jenisPeta">
+    <p class="kecil redup">Di halaman Peta, setiap pengguna memilih peta dasar lewat ikon lapisan (kanan atas peta); pilihannya diingat per perangkat. Di sini Anda mengatur pilihan bawaan dan layanan milik instansi.</p>
+    <label class="centang"><input type="checkbox" name="publik" ${p.publik !== false ? raw("checked") : ""}> Tampilkan peta dasar publik: Peta Jalan (OpenStreetMap), Citra Satelit (Esri), Topografi (OpenTopoMap)</label>
+    <p class="kecil redup" style="margin-top:0">Ubin publik hanya dimuat saat pengguna memilihnya. Layanan publik tunduk pada ketentuan penyedianya (OSM Tile Usage Policy, ketentuan Esri, OpenTopoMap CC-BY-SA) dan tidak ditujukan untuk trafik besar; untuk pemakaian berat gunakan layanan berlangganan atau ortofoto sendiri di bawah.</p>
+    <label class="ruas"><span>Bawaan saat pertama dibuka</span><select name="jenis" id="jenisPeta">
       <option value="kosong" ${p.jenis === "kosong" ? raw("selected") : ""}>Tanpa peta dasar</option>
-      <option value="osm" ${p.jenis === "osm" ? raw("selected") : ""}>OpenStreetMap (tile.openstreetmap.org, pemakaian ringan)</option>
-      <option value="xyz" ${p.jenis === "xyz" ? raw("selected") : ""}>Layanan ubin XYZ sendiri/berlangganan</option>
+      <option value="osm" ${p.jenis === "osm" ? raw("selected") : ""}>Peta Jalan (OpenStreetMap)</option>
+      <option value="xyz" ${p.jenis === "xyz" ? raw("selected") : ""}>Layanan ubin XYZ milik/langganan instansi (mis. foto udara drone)</option>
       <option value="wms" ${p.jenis === "wms" ? raw("selected") : ""}>WMS (mis. geoportal instansi)</option></select></label>
     <div id="rincianPeta">
       <label class="ruas"><span>Alamat layanan (https://)</span><input name="url" type="url" value="${p.url || ""}" placeholder="https://contoh.id/tiles/{z}/{x}/{y}.png"></label>
       <label class="ruas"><span>Nama lapisan (WMS)</span><input name="lapisan" type="text" value="${p.lapisan || ""}"></label>
-      <label class="ruas"><span>Atribusi (wajib sesuai lisensi penyedia)</span><input name="atribusi" type="text" value="${p.atribusi || ""}" maxlength="300"></label></div>
-    <p class="kecil redup">OpenStreetMap: data \u00a9 kontributor OSM (ODbL); server ubin publiknya tidak untuk trafik besar \u2014 patuhi Tile Usage Policy atau gunakan penyedia berlangganan.</p>
+      <label class="ruas"><span>Nama / atribusi (tampil di pilihan lapisan dan pojok peta)</span><input name="atribusi" type="text" value="${p.atribusi || ""}" maxlength="300" placeholder="mis. Ortofoto Drone Kebun 2026"></label></div>
     <div class="kaki-form" style="position:static"><button class="tombol utama" type="submit" ${kunciRo() ? raw("disabled") : ""}>Simpan</button></div></form>`);
   var f = $("#fPeta");
   var sinkron = function() {
@@ -10269,8 +11241,11 @@ function sPeta(el) {
   sinkron();
   f.onsubmit = function(e) {
     e.preventDefault();
-    api("setelan_peta", ambilForm(f)).then(function(p2) {
+    var d = ambilForm(f);
+    if (d.jenis === "osm" && !d.publik) return toast('OpenStreetMap sebagai bawaan membutuhkan centang "peta dasar publik".', "galat");
+    api("setelan_peta", d).then(function(p2) {
       S.data.peta = p2;
+      Simpan.hapus("petaDasar");
       simpanCache_();
       toast("Peta dasar disimpan.", "baik");
     }).catch(galat);
@@ -10411,7 +11386,7 @@ function sTentang(el) {
 }
 if ('serviceWorker' in navigator) window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
 mulai();
-/* CCMS-AKHIR 1.0.3 */
+/* CCMS-AKHIR 1.1.0 */
 </script>
 </body>
 </html>

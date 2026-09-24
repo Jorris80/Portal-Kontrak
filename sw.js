@@ -1,7 +1,7 @@
 /* Service worker: cangkang aplikasi tersimpan untuk dibuka luring.
    config.js SELALU diambil dari jaringan dulu (agar URL baru langsung berlaku).
    Permintaan ke Apps Script (POST) tidak pernah disimpan di cache. */
-var CACHE = 'ccms-1.0.3';
+var CACHE = 'ccms-1.1.0';
 var CANGKANG = ['./', 'index.html', 'manifest.webmanifest', 'ikon.svg'];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(CANGKANG); }).then(function () { return self.skipWaiting(); }));
