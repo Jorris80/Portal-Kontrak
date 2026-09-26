@@ -2303,6 +2303,54 @@ body.ada-peta-penuh {
 .label-jauh .label-peta span {
   display: none;
 }
+.naskah {
+  max-width: 760px;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+.naskah h3 {
+  font-size: 15px;
+  margin: 16px 0 4px;
+}
+.naskah p {
+  margin: 6px 0;
+}
+.naskah ul {
+  margin: 6px 0;
+  padding-left: 20px;
+}
+.naskah li {
+  margin: 3px 0;
+}
+mark.kosong-legal {
+  background: var(--amber-muda);
+  color: #8A6508;
+  padding: 0 3px;
+  border-radius: 3px;
+}
+pre.lisensi {
+  white-space: pre-wrap;
+  font-size: 11.5px;
+  background: var(--abu-muda);
+  padding: 10px;
+  border-radius: 5px;
+  max-height: 220px;
+  overflow: auto;
+}
+.riwayat-versi > div {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--garis);
+}
+.riwayat-versi ul {
+  margin: 4px 0 0;
+  padding-left: 20px;
+  font-size: 13.5px;
+}
+.tautan-legal a {
+  color: var(--biru);
+  display: inline-block;
+  padding: 10px 0;
+}
 </style>
 </head>
 <body>
@@ -6752,10 +6800,10 @@ var qrcode = (function() {
 });
 </script>
 <script>
-var VERSI_KLIEN = "1.1.0";
+var VERSI_KLIEN = "1.2.0";
 var S = { token: "", data: null, saya: null, halaman: "dasbor", param: {}, luring: false, waktuData: "", detail: {}, filter: {} };
 var MODE = typeof google !== "undefined" && google.script && google.script.run ? "gas" : "pwa";
-var URL_API = typeof window.CCMS_CONFIG === "object" && window.CCMS_CONFIG && window.CCMS_CONFIG.URL_API || "https://script.google.com/macros/s/AKfycbzvc2995rzHcqwyXdsyZZJV9ICOzDYCp9PC3p2SoR2HL7h3su_4N4QOlunEUAyKdkVZ/exec";
+var URL_API = typeof window.CCMS_CONFIG === "object" && window.CCMS_CONFIG && window.CCMS_CONFIG.URL_API || "";
 var ANTRIAN_BOLEH = ["kewajiban_status", "risiko_selesai"];
 var Simpan = {
   ambil: function(k, cad) {
@@ -7039,12 +7087,19 @@ function keluar() {
     S.token = "";
     S.data = null;
     S.detail = {};
-    Simpan.hapus("token");
-    Simpan.hapus("cache");
-    Simpan.hapus("antrian");
+    bersihkanLokal_();
     tampilMasuk();
   });
   return t;
+}
+var PREFERENSI_LOKAL = ["tema", "petaDasar", "legendaTerlipat", "labelPeta"];
+function bersihkanLokal_() {
+  try {
+    Object.keys(localStorage).forEach(function(k) {
+      if (k.indexOf("ccms_") === 0 && PREFERENSI_LOKAL.indexOf(k.slice(5)) < 0) localStorage.removeItem(k);
+    });
+  } catch (e) {
+  }
 }
 var Nav = {
   dorong: function(st) {
@@ -7733,7 +7788,7 @@ function bangunKerangka() {
       <aside id="sisi">
         <div class="kop">${logoHtml(hd)}<div><b id="kopJudul">${hd.judul}</b><small>${hd.entitas || hd.subjudul}</small></div></div>
         <nav id="navSisi"></nav>
-        <div class="kaki"><div id="kakiPengguna"></div><div class="redup kecil" style="margin-top:6px">Versi ${VERSI_KLIEN}</div></div>
+        <div class="kaki"><div id="kakiPengguna"></div><div class="kecil" style="margin-top:6px"><a href="#" data-klik="keTentang" style="color:inherit">Versi ${VERSI_KLIEN} \u00b7 Syarat & privasi</a></div></div>
       </aside>
       <div id="utama">
         <header id="atas">
@@ -7748,7 +7803,12 @@ function bangunKerangka() {
     </div>
     <nav id="bawah"></nav>`);
   perbaruiKerangka();
+  setTimeout(periksaNaskah, 0);
 }
+KLIK.keTentang = function() {
+  S.setelan = "tentang";
+  ke("setelan");
+};
 function jumlahMenunggu() {
   return menungguSaya().length;
 }
@@ -7822,6 +7882,7 @@ KLIK.menuLainnya = function() {
     isi: H`<div class="daftar">
       <button type="button" class="tombol" data-klik="nav" data-h="arsip" style="justify-content:flex-start">${ikon("arsip")} Arsip (per proyek, jenis, tahun)</button>
       <button type="button" class="tombol" data-klik="nav" data-h="setelan" style="justify-content:flex-start">${ikon("setelan")} Setelan & profil</button>
+      <button type="button" class="tombol" data-klik="keTentang" style="justify-content:flex-start">${ikon("perisai")} Tentang, syarat & privasi</button>
       <button type="button" class="tombol" data-klik="keluar" style="justify-content:flex-start">${ikon("keluar")} Keluar</button></div>`,
     tombol: [],
     saatBuka: function(f, tutup) {
@@ -7849,7 +7910,8 @@ KLIK.menuAkun = function() {
   });
 };
 KLIK.keluar = function() {
-  konfirmasi("Keluar?", "Anda perlu masuk lagi dengan surel dan sandi.", "Keluar").then(function(y) {
+  var q = Simpan.ambil("antrian", []).length;
+  konfirmasi("Keluar?", q ? q + " perubahan luring belum terkirim dan akan HILANG bila Anda keluar sekarang. Sambungkan internet dulu agar terkirim." : "Sesi, salinan data luring, dan draf formulir yang belum disimpan akan dihapus dari perangkat ini. Anda perlu masuk lagi dengan surel dan sandi.", q ? "Tetap keluar" : "Keluar", !!q).then(function(y) {
     if (y) keluar();
   });
 };
@@ -7872,7 +7934,7 @@ function tampilMasuk(pesan) {
       <div id="infoMasuk" class="tersembunyi" role="status" style="margin-top:10px"></div>
     </form>
     <p class="redup kecil" style="margin-top:14px">Lupa sandi? Minta administrator mengatur ulang sandi Anda. Akun terkunci 15 menit setelah 5 kali salah.</p>
-    <p class="redup kecil">Versi ${VERSI_KLIEN}${MODE === "pwa" ? " \xB7 aplikasi terpasang" : ""}</p>`);
+    <p class="kecil tautan-legal"><a href="#" data-klik="bukaSyarat">Syarat & Ketentuan</a> \u00b7 <a href="#" data-klik="bukaPrivasi">Pemberitahuan Privasi</a> \u00b7 <a href="#" data-klik="bukaVersi">Versi ${VERSI_KLIEN}</a>${MODE === "pwa" ? " \xB7 aplikasi terpasang" : ""}</p>`);
   var f = $("#fMasuk", app);
   $("#lihatSandi", app).onchange = function() {
     f.sandi.type = this.checked ? "text" : "password";
@@ -10893,6 +10955,7 @@ var BAGIAN_SETELAN = [
   ["integrasi", "Integrasi", "setelan"],
   ["lisensi", "Lisensi", null],
   ["rawat", "Pemeliharaan", "setelan"],
+  ["legal", "Syarat & privasi", "setelan"],
   ["tentang", "Tentang", null]
 ];
 S.setelan = "profil";
@@ -10909,7 +10972,7 @@ function renderSetelan(el) {
   pasang(el, H`<div class="tab" style="margin-top:0">${bag.map(function(b) {
     return H`<button class="${S.setelan === b[0] ? "aktif" : ""}" data-klik="sBagian" data-b="${b[0]}">${b[1]}</button>`;
   })}</div><div id="isiSetelan"></div>`);
-  var fn = { profil: sProfil, pengguna: sPengguna, rekanan: sRekanan, proyek: sProyek, kop: sKop, ambang: sAmbang, petadasar: sPeta, integrasi: sIntegrasi, lisensi: sLisensi, rawat: sRawat, tentang: sTentang }[S.setelan];
+  var fn = { profil: sProfil, pengguna: sPengguna, rekanan: sRekanan, proyek: sProyek, kop: sKop, ambang: sAmbang, petadasar: sPeta, integrasi: sIntegrasi, lisensi: sLisensi, rawat: sRawat, legal: sLegal, tentang: sTentang }[S.setelan];
   fn($("#isiSetelan"));
 }
 KLIK.sBagian = function(t) {
@@ -11374,19 +11437,337 @@ KLIK.sUkuran = function() {
     })}</tbody></table></div>`);
   }).catch(galat);
 };
-function sTentang(el) {
-  pasang(el, H`<div class="kartu"><h2>Portal Kontrak & Korespondensi</h2>
-    <dl class="def" style="margin-top:10px"><dt>Versi antarmuka</dt><dd>${VERSI_KLIEN}</dd><dt>Versi peladen</dt><dd>${S.data.versi}${S.data.versi !== VERSI_KLIEN ? H` ${pil("berbeda", "merah")}` : ""}</dd>
-      <dt>Mode</dt><dd>${MODE === "gas" ? "Web App Apps Script" : "Aplikasi terpasang (PWA)"}</dd><dt>Data per</dt><dd>${fmtWaktu(S.waktuData)}</dd></dl>
-    <p class="kecil">Aplikasi ini adalah register dan alur kerja internal. Sidik isi (HMAC-SHA256), jejak audit berantai, dan QR verifikasi membantu membuktikan bahwa isi register tidak berubah sejak disetujui. Aplikasi ini <b>bukan</b> Penyelenggara Sertifikasi Elektronik dan tidak terhubung ke BSrE, Peruri, atau PrivyID; tanda tangan tersertifikasi dilakukan di layanan masing-masing lalu buktinya dicatat di sini.</p>
-    <h3 style="margin-top:12px">Komponen pihak ketiga</h3>
-    <ul class="kecil"><li>Leaflet 1.9.4 \u2014 \u00a9 Vladimir Agafonkin, CloudMade \u2014 lisensi BSD-2-Clause</li>
-      <li>qrcode-generator 1.4.4 \u2014 \u00a9 Kazuhiko Arase \u2014 lisensi MIT. \u201cQR Code\u201d adalah merek dagang terdaftar DENSO WAVE INCORPORATED.</li>
-      <li>Peta dasar opsional: \u00a9 kontributor OpenStreetMap (ODbL) atau penyedia yang Anda pilih.</li></ul></div>`);
+var RIWAYAT_VERSI = [
+  ["1.2.0", "2026-09-26", [
+    "Halaman Tentang: versi, riwayat perubahan, Syarat & Ketentuan, Pemberitahuan Privasi, dan komponen sumber terbuka.",
+    "Naskah dapat dibaca dari layar masuk sebelum surel dan sandi diserahkan.",
+    "Pengguna diminta membaca naskah saat pertama masuk dan setiap kali naskah diperbarui; tanggal & versinya tercatat di jejak audit.",
+    'Setelan baru "Syarat & privasi" untuk identitas penyedia, kontak dukungan, dan kontak privasi.'
+  ]],
+  ["1.1.0", "2026-09-25", [
+    "Peta pola SawitGIS Mandiri: pilihan peta dasar, overlay, tema warna, legenda, GPS HP, ukur, layar penuh, fokus lokasi.",
+    "Editor lokasi: gambar batas, impor Shapefile (UTM), KML, GeoJSON, titik GPS.",
+    "Lokasi pendamping untuk dokumen yang sudah berlaku (di luar sidik isi, tercatat di audit).",
+    "Luas dihitung pada elipsoid WGS 84 (rumus lama melebihkan \xB10,67% di dekat khatulistiwa)."
+  ]],
+  ["1.0.3", "2026-09-24", [
+    "Kode antarmuka dimuat sebagai teks lewat google.script.run, tidak lagi melewati pengolahan HTML Apps Script.",
+    "Sidik SHA-256 per berkas: berkas yang rusak/terpotong disebut namanya."
+  ]],
+  ["1.0.2", "2026-09-24", ["Index.html dipecah menjadi 9 berkas kecil (\u226480 KB) agar aman ditempel."]],
+  ["1.0.1", "2026-09-24", [
+    'Diagnosis layar "Memuat\u2026", batas waktu permintaan 60 detik, halaman pemeriksaan ?cek=1.',
+    "Berkas hanya berisi karakter ASCII dengan baris pendek."
+  ]],
+  ["1.0.0", "2026-09-23", ["Rilis pertama di Google Apps Script + Google Sheets: register, alur persetujuan berurutan, tanda tangan, termin, kewajiban, risiko, lampiran Drive, sidik isi, jejak audit berantai, QR verifikasi, peta, mode luring (PWA), lisensi."]]
+];
+var NASKAH = {
+  syarat: {
+    judul: "Syarat & Ketentuan Penggunaan",
+    pembuka: 'Syarat & Ketentuan ini mengatur penggunaan aplikasi {APLIKASI} ("Aplikasi") yang dipasang dan dikelola oleh {INSTANSI} ("Instansi") dengan perangkat lunak dari {PENYEDIA} ("Penyedia"). Dengan masuk dan menggunakan Aplikasi, Anda menyatakan telah membaca dan menyetujui ketentuan berikut.',
+    bagian: [
+      ["Definisi", [
+        "- Pengguna: setiap orang yang diberi akun oleh administrator Instansi, termasuk pegawai Instansi dan perwakilan rekanan.",
+        "- Dokumen: kontrak, SPK, perjanjian, addendum, surat, berita acara, dan dokumen lain yang dicatat di Aplikasi beserta lampiran, termin, kewajiban, dan lokasinya.",
+        "- Data Instansi: seluruh isi yang disimpan di Google Spreadsheet dan Google Drive milik Instansi melalui Aplikasi."
+      ]],
+      ["Sifat Aplikasi", [
+        "Aplikasi adalah register dan alat alur kerja internal untuk mencatat dokumen, persetujuan berjenjang, tanda tangan, tenggat, pembayaran termin, dan lokasi pekerjaan. Aplikasi bukan Penyelenggara Sertifikasi Elektronik, bukan sistem arsip resmi negara, dan tidak menggantikan naskah asli yang ditandatangani para pihak."
+      ]],
+      ["Akun dan keamanan", [
+        "- Akun bersifat pribadi. Jangan meminjamkan akun atau memberitahukan sandi kepada siapa pun, termasuk kepada administrator.",
+        "- Sandi sementara wajib diganti saat pertama masuk. Akun dikunci sementara setelah beberapa kali salah sandi.",
+        "- Segera laporkan kepada administrator bila Anda menduga akun Anda disalahgunakan.",
+        "- Setiap tindakan yang dilakukan dengan akun Anda tercatat atas nama Anda di jejak audit."
+      ]],
+      ["Tanda tangan elektronik", [
+        'Tanda tangan "TTE internal" di Aplikasi adalah tanda tangan elektronik tidak tersertifikasi: Pengguna mengonfirmasi dengan sandinya, lalu identitas, waktu, dan sidik isi dokumen dicatat. Kekuatan pembuktiannya bergantung pada kesepakatan para pihak dan penilaian yang berwenang.',
+        "Tanda tangan elektronik tersertifikasi (misalnya melalui BSrE atau PrivyID) dan tanda tangan basah dilakukan di luar Aplikasi. Aplikasi hanya mencatat metode, waktu, dan sidik berkas buktinya, serta tidak memvalidasi sertifikat elektronik pihak lain.",
+        "Dengan menandatangani melalui Aplikasi, Anda menyatakan berwenang mewakili pihak yang tercantum dan telah membaca isi dokumen."
+      ]],
+      ["Sidik isi, jejak audit, dan QR verifikasi", [
+        "Sidik isi (HMAC-SHA256), rantai jejak audit, dan QR verifikasi membantu mendeteksi perubahan isi register setelah dokumen disetujui. Fitur ini bukan jaminan hukum atas keaslian dokumen fisik. Halaman verifikasi QR dapat dibuka siapa pun yang memegang kodenya dan menampilkan nomor, perihal, nama para pihak, masa berlaku, dan status dokumen."
+      ]],
+      ["Kewajiban Pengguna", [
+        "- Mengisi data dengan benar dan hanya mengunggah berkas yang berhak Anda gunakan.",
+        "- Tidak mengunggah data pribadi yang tidak diperlukan (misalnya salinan KTP, data kesehatan) kecuali diwajibkan dan diizinkan kebijakan Instansi.",
+        "- Tidak menyunting lembar kerja atau berkas Drive secara langsung di luar Aplikasi; perubahan semacam itu terdeteksi sebagai pelanggaran integritas.",
+        "- Tidak mencoba melewati pembatasan hak akses, mengganggu layanan, atau memakai Aplikasi untuk tujuan yang melanggar hukum."
+      ]],
+      ["Hasil AI dan perhitungan otomatis", [
+        "Ekstraksi isi dokumen dengan AI (bila diaktifkan Instansi), penanda risiko, luas area, dan perhitungan termin disediakan untuk membantu. Hasilnya dapat keliru dan wajib diperiksa manusia sebelum dipakai untuk keputusan atau pembayaran."
+      ]],
+      ["Data Instansi", [
+        "Data Instansi disimpan di akun Google milik Instansi dan tetap menjadi milik Instansi. Penyedia tidak menyimpan salinan Data Instansi kecuali diberi akses untuk keperluan dukungan teknis atas permintaan Instansi. Pengelolaan data pribadi dijelaskan dalam Pemberitahuan Privasi."
+      ]],
+      ["Lisensi dan ketersediaan", [
+        "- Aplikasi dilisensikan kepada Instansi, tidak dijual. Penggunaan dibatasi paket lisensi yang berlaku (jumlah dokumen, pengguna, dan fitur).",
+        "- Bila lisensi atau masa uji coba berakhir, Aplikasi beralih ke mode baca: data tetap dapat dibaca, dicetak, diekspor, dan diverifikasi, tetapi pencatatan baru berhenti.",
+        "- Aplikasi bergantung pada layanan Google (Apps Script, Sheets, Drive, Gmail) beserta kuota dan gangguannya, yang berada di luar kendali Penyedia dan Instansi.",
+        "- Dilarang menyalin, membongkar, menjual kembali, atau menghapus pemberitahuan hak cipta dan lisensi dari Aplikasi kecuali diizinkan tertulis oleh Penyedia."
+      ]],
+      ["Layanan pihak ketiga", [
+        "Fitur tertentu memakai layanan pihak ketiga yang diaktifkan Instansi atau dipilih Pengguna: Google Gemini (ekstraksi AI), Fonnte (WhatsApp), dan penyedia peta dasar (OpenStreetMap, Esri, OpenTopoMap, atau layanan milik Instansi). Penggunaannya tunduk pada ketentuan masing-masing penyedia."
+      ]],
+      ["Batasan tanggung jawab", [
+        "Sejauh diizinkan hukum, Penyedia tidak bertanggung jawab atas kerugian tidak langsung, kehilangan keuntungan, atau kerugian akibat data yang diisi keliru, keputusan yang diambil tanpa pemeriksaan, gangguan layanan pihak ketiga, atau penyuntingan data di luar Aplikasi. Tanggung jawab Penyedia atas hal lain dibatasi sebagaimana diatur dalam perjanjian lisensi antara Penyedia dan Instansi."
+      ]],
+      ["Penghentian akses", [
+        "Administrator Instansi dapat menonaktifkan akun kapan saja, termasuk bila ketentuan ini dilanggar. Catatan yang telah dibuat dengan akun tersebut tetap tersimpan sebagai bagian dari register dan jejak audit."
+      ]],
+      ["Perubahan ketentuan", [
+        "Ketentuan ini dapat diperbarui. Versi naskah dicantumkan di bawah; bila versinya berubah, Pengguna akan diminta membaca ulang saat masuk berikutnya."
+      ]],
+      ["Hukum yang berlaku dan kontak", [
+        "Ketentuan ini tunduk pada hukum Republik Indonesia. Pertanyaan tentang penggunaan Aplikasi: {KONTAK_DUKUNGAN}. Penyedia perangkat lunak: {PENYEDIA}, {ALAMAT_PENYEDIA}."
+      ]]
+    ]
+  },
+  privasi: {
+    judul: "Pemberitahuan Privasi",
+    pembuka: "Pemberitahuan ini menjelaskan data pribadi apa yang diproses oleh aplikasi {APLIKASI}, untuk apa, di mana disimpan, dengan siapa dibagikan, dan hak Anda, dengan mengacu pada Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP).",
+    bagian: [
+      ["Siapa yang bertanggung jawab", [
+        "- Pengendali Data Pribadi adalah {INSTANSI}, yang memasang Aplikasi di akun Google-nya dan menentukan untuk apa data dipakai.",
+        "- {PENYEDIA} adalah penyedia perangkat lunak. Penyedia tidak menerima atau menyimpan data dari Aplikasi. Bila Instansi memberi Penyedia akses untuk dukungan teknis, Penyedia bertindak sebagai Prosesor atas instruksi Instansi.",
+        "- Kontak untuk urusan data pribadi: {KONTAK_PRIVASI}."
+      ]],
+      ["Data yang diproses", [
+        "- Akun pengguna: nama, surel, NIP/NIK karyawan, peran, jabatan, departemen, nomor telepon (bila diisi), foto profil (bila diunggah), waktu masuk terakhir, catatan percobaan masuk yang gagal, dan tanggal membaca naskah ini. Sandi tidak disimpan; yang disimpan hanya hash bergaram.",
+        "- Para pihak dalam dokumen: nama badan, nama dan jabatan wakil, alamat, NPWP, NIB, nama bank dan nomor rekening, serta nama, jabatan, dan surel penandatangan.",
+        "- Tanda tangan: metode, waktu, sidik isi, dan untuk tanda tangan eksternal, berkas bukti yang diunggah.",
+        "- Lampiran: berkas yang diunggah Pengguna (dapat memuat data pribadi sesuai isinya).",
+        "- Lokasi: batas area dan titik lokasi pekerjaan yang disimpan pada dokumen. Posisi GPS perangkat hanya dipakai di perangkat saat Anda menekan tombol lokasi dan tidak dikirim ke peladen, kecuali Anda sendiri menyimpannya sebagai titik lokasi dokumen.",
+        "- Jejak audit: siapa melakukan apa pada dokumen apa dan kapan. Aplikasi tidak mencatat alamat IP."
+      ]],
+      ["Tujuan dan dasar pemrosesan", [
+        "- Mengelola dan mengarsipkan kontrak serta korespondensi, menjalankan alur persetujuan dan tanda tangan, memantau tenggat dan pembayaran: untuk pelaksanaan perjanjian dan kepentingan yang sah Instansi dalam mengelola perikatannya.",
+        "- Menyimpan identitas perpajakan dan rekening rekanan: untuk pelaksanaan perjanjian dan pemenuhan kewajiban hukum (antara lain perpajakan dan kearsipan).",
+        "- Jejak audit, sidik isi, dan pengamanan akun: untuk kepentingan yang sah dalam menjaga keamanan, integritas, dan akuntabilitas.",
+        "- Pengingat surel/WhatsApp: untuk kepentingan yang sah memastikan kewajiban kontrak terpenuhi tepat waktu.",
+        "Data tidak dipakai untuk iklan, tidak dijual, dan tidak dipakai untuk profil atau pengambilan keputusan otomatis yang berakibat hukum bagi Anda."
+      ]],
+      ["Tempat penyimpanan dan pihak ketiga", [
+        "- Google (Apps Script, Sheets, Drive, Gmail): seluruh data disimpan di akun Google milik Instansi. Pusat data Google dapat berada di luar Indonesia, sehingga terjadi transfer data lintas negara sesuai ketentuan layanan Google yang disepakati Instansi.",
+        "- Google Gemini (hanya bila Instansi memasang kunci): isi berkas yang Anda pilih untuk diekstraksi dikirim ke Google untuk dianalisis.",
+        "- Fonnte (hanya bila diaktifkan): nomor telepon dan isi pengingat dikirim untuk diteruskan melalui WhatsApp.",
+        "- Penyedia peta dasar (hanya saat Anda memilihnya): OpenStreetMap, Esri, OpenTopoMap, atau layanan milik Instansi menerima alamat IP perangkat dan wilayah peta yang Anda lihat, bukan data dokumen.",
+        "- GitHub Pages (hanya versi aplikasi terpasang): menyajikan berkas tampilan dan dapat mencatat alamat IP; tidak menerima data dokumen.",
+        "- Halaman verifikasi QR: siapa pun yang memegang kode QR dapat melihat nomor, perihal, nama para pihak, masa berlaku, dan status dokumen tersebut."
+      ]],
+      ["Data di perangkat Anda", [
+        "Aplikasi menyimpan token sesi, preferensi tampilan, draf formulir yang belum disimpan, dan (pada aplikasi terpasang) salinan data serta antrean perubahan untuk mode luring di penyimpanan lokal peramban. Aplikasi tidak memakai cookie pelacak atau analitik. Saat Anda menekan Keluar, semua data tersebut dihapus dari perangkat kecuali preferensi tampilan; selalu gunakan Keluar pada perangkat bersama."
+      ]],
+      ["Masa penyimpanan", [
+        "- Dokumen dan lampiran disimpan selama diperlukan menurut kebijakan arsip Instansi dan peraturan yang berlaku.",
+        "- Jejak audit tidak dapat dihapus melalui Aplikasi agar integritasnya terjaga.",
+        "- Salinan cadangan harian disimpan sebanyak jumlah yang diatur administrator; cadangan yang lebih lama dipindahkan ke Sampah Google Drive milik Instansi dan dihapus permanen oleh Google setelah masa Sampah berakhir.",
+        "- Sesi masuk berakhir paling lama 30 hari; akun yang dinonaktifkan tetap tercatat sebagai pelaku di jejak audit."
+      ]],
+      ["Keamanan", [
+        "Sandi di-hash bergaram, akun dikunci setelah percobaan salah berulang, setiap aksi diperiksa hak aksesnya di peladen, kunci layanan disimpan di Script Properties, dan jejak audit dirantai dengan HMAC. Namun siapa pun yang diberi akses langsung ke spreadsheet atau folder Drive dapat membaca seluruh data tanpa melalui pemeriksaan peran; Instansi wajib membatasi berbagi berkas tersebut.",
+        "Bila terjadi kegagalan pelindungan data pribadi, Instansi selaku pengendali akan memberitahukannya kepada subjek data dan lembaga yang berwenang dalam jangka waktu yang ditetapkan UU PDP (paling lambat 3 \xD7 24 jam)."
+      ]],
+      ["Hak Anda", [
+        "Sesuai UU PDP, Anda berhak antara lain untuk: mendapatkan informasi tentang pemrosesan data Anda; mengakses dan memperoleh salinan; memperbaiki data yang keliru; meminta penghapusan atau pemusnahan, mengakhiri, atau membatasi pemrosesan; menarik persetujuan bila pemrosesan didasarkan pada persetujuan; serta mengajukan keberatan. Sebagian hak dapat dibatasi bila data wajib disimpan menurut hukum atau diperlukan untuk integritas register dan jejak audit.",
+        "Sebagian data dapat Anda perbaiki sendiri di Setelan > Profil. Permintaan lainnya diajukan ke {KONTAK_PRIVASI}."
+      ]],
+      ["Perubahan pemberitahuan", [
+        "Pemberitahuan ini dapat diperbarui. Versi naskah dicantumkan di bawah; bila berubah, Anda akan diminta membaca ulang saat masuk berikutnya."
+      ]]
+    ]
+  }
+};
+function nilaiNaskah(L2, instansi) {
+  L2 = L2 || {};
+  instansi = instansi || {};
+  return {
+    APLIKASI: instansi.judul || "Portal Kontrak & Korespondensi",
+    INSTANSI: instansi.entitas || "",
+    PENYEDIA: L2.penyedia || "",
+    ALAMAT_PENYEDIA: L2.alamatPenyedia || "",
+    KONTAK_DUKUNGAN: L2.kontakDukungan || "",
+    KONTAK_PRIVASI: L2.kontakPrivasi || ""
+  };
 }
+var PETUNJUK_ISI = {
+  INSTANSI: "nama badan Instansi",
+  PENYEDIA: "nama penyedia perangkat lunak",
+  ALAMAT_PENYEDIA: "alamat penyedia",
+  KONTAK_DUKUNGAN: "kontak dukungan: surel/WhatsApp",
+  KONTAK_PRIVASI: "kontak privasi / pejabat pelindungan data: surel"
+};
+function isiPenanda(teks, nilai, mode) {
+  return teks.replace(/\{([A-Z_]+)\}/g, function(_, k) {
+    var v = nilai[k];
+    if (v) return mode === "html" ? esc(v) : v;
+    return mode === "html" ? '<mark class="kosong-legal">[' + esc(PETUNJUK_ISI[k] || k) + " belum diisi]</mark>" : "[ISI: " + (PETUNJUK_ISI[k] || k) + "]";
+  });
+}
+function naskahHtml(jenis, L2, instansi, versi, berlaku) {
+  var N = NASKAH[jenis], nilai = nilaiNaskah(L2, instansi), h = [];
+  var par = function(t) {
+    return isiPenanda(esc(t).replace(/\{([A-Z_]+)\}/g, "{$1}"), nilai, "html");
+  };
+  h.push("<p>" + par(N.pembuka) + "</p>");
+  N.bagian.forEach(function(b, i) {
+    h.push("<h3>" + (i + 1) + ". " + esc(b[0]) + "</h3>");
+    var daftar = [];
+    b[1].forEach(function(t) {
+      if (t.indexOf("- ") === 0) {
+        daftar.push("<li>" + par(t.slice(2)) + "</li>");
+        return;
+      }
+      if (daftar.length) {
+        h.push("<ul>" + daftar.join("") + "</ul>");
+        daftar = [];
+      }
+      h.push("<p>" + par(t) + "</p>");
+    });
+    if (daftar.length) h.push("<ul>" + daftar.join("") + "</ul>");
+  });
+  h.push('<p class="kecil redup">Versi naskah ' + esc(versi || "") + (berlaku ? " \xB7 berlaku sejak " + esc(fmtTgl(berlaku)) : "") + "</p>");
+  return raw('<div class="naskah">' + h.join("") + "</div>");
+}
+function ambilLegal() {
+  if (S.data && S.data.legal) return Promise.resolve({ versi: S.data.versi, naskahVersi: S.data.naskahVersi, legal: S.data.legal, instansi: S.data.header });
+  if (S.legalPublik) return Promise.resolve(S.legalPublik);
+  return api("legal_publik", {}).then(function(r) {
+    S.legalPublik = r;
+    return r;
+  });
+}
+function bukaNaskah(jenis) {
+  return ambilLegal().then(function(r) {
+    return modal({
+      judul: NASKAH[jenis].judul,
+      lebar: true,
+      isi: naskahHtml(jenis, r.legal, r.instansi, r.naskahVersi, r.legal.berlakuSejak),
+      tombol: [{ teks: "Tutup", kelas: "utama", nilai: null }]
+    });
+  }).catch(galat);
+}
+KLIK.bukaSyarat = function() {
+  bukaNaskah("syarat");
+};
+KLIK.bukaPrivasi = function() {
+  bukaNaskah("privasi");
+};
+KLIK.bukaVersi = function() {
+  modal({ judul: "Versi aplikasi", isi: H`<p>Antarmuka <b>${VERSI_KLIEN}</b>${S.data ? H` \u00b7 peladen <b>${S.data.versi}</b>` : ""}</p>${riwayatHtml(3)}` });
+};
+function riwayatHtml(batas) {
+  return H`<div class="riwayat-versi">${RIWAYAT_VERSI.slice(0, batas || 99).map(function(v) {
+    return H`<div><b>${v[0]}</b> <span class="redup kecil">${fmtTgl(v[1])}</span><ul>${v[2].map(function(x) {
+      return H`<li>${x}</li>`;
+    })}</ul></div>`;
+  })}</div>`;
+}
+var _naskahDitanya = false;
+function periksaNaskah() {
+  if (_naskahDitanya || !S.data || !S.saya || S.luring) return;
+  var v = S.data.naskahVersi;
+  if (!v || String(S.saya.setujuNaskah || "").split("|")[0] === v) return;
+  _naskahDitanya = true;
+  var ulang = !!S.saya.setujuNaskah;
+  modal({
+    judul: ulang ? "Syarat & privasi diperbarui" : "Sebelum mulai",
+    wajib: true,
+    tanpaFokus: true,
+    isi: H`
+      <p>${ulang ? "Naskah Syarat & Ketentuan dan Pemberitahuan Privasi telah diperbarui ke versi " + v + "." : "Selamat datang di " + (S.data.header.judul || "Portal Kontrak") + ". Mohon baca ketentuan penggunaan dan cara data Anda diproses."}</p>
+      <ul class="kecil">
+        <li>Data tersimpan di Google Spreadsheet & Drive milik ${S.data.header.entitas || "instansi Anda"}; setiap tindakan Anda tercatat di jejak audit.</li>
+        <li>Tanda tangan di aplikasi adalah tanda tangan elektronik tidak tersertifikasi, dikonfirmasi dengan sandi Anda.</li>
+        <li>Hasil AI dan perhitungan otomatis wajib diperiksa sebelum dipakai.</li></ul>
+      <div class="baris"><button type="button" class="tombol kecil" data-klik="bukaSyarat">Baca Syarat & Ketentuan</button>
+        <button type="button" class="tombol kecil" data-klik="bukaPrivasi">Baca Pemberitahuan Privasi</button></div>
+      <label class="centang" style="margin-top:10px"><input type="checkbox" name="setuju"> Saya telah membaca dan menyetujui Syarat & Ketentuan serta memahami Pemberitahuan Privasi (versi ${v}).</label>`,
+    tombol: [{ teks: "Keluar", nilai: "keluar" }, { teks: "Lanjutkan", kelas: "utama", kirim: true }],
+    periksa: function(h) {
+      if (h.nilai === "keluar") return "keluar";
+      if (!h.data.setuju) throw new Error("Centang pernyataan untuk melanjutkan, atau pilih Keluar.");
+      return api("legal_setuju", { versi: v });
+    }
+  }).then(function(r) {
+    if (!r || r.hasil === "keluar") {
+      _naskahDitanya = false;
+      return keluar();
+    }
+    S.saya.setujuNaskah = r.hasil.setujuNaskah;
+    S.data.saya = S.saya;
+    simpanCache_();
+  });
+}
+S.subTentang = "versi";
+function sTentang(el) {
+  var t = [["versi", "Versi"], ["syarat", "Syarat & Ketentuan"], ["privasi", "Privasi"], ["sumber", "Sumber terbuka"]];
+  pasang(el, H`<div class="kartu"><div class="baris" style="margin-bottom:10px">${t.map(function(x) {
+    return H`<button class="tombol kecil ${S.subTentang === x[0] ? "utama" : ""}" data-klik="subTentang" data-t="${x[0]}">${x[1]}</button>`;
+  })}</div>
+    <div id="isiTentang"></div></div>`);
+  var D = S.data, L2 = D.legal || {}, isi = $("#isiTentang");
+  if (S.subTentang === "versi") {
+    var st = String(S.saya.setujuNaskah || "").split("|");
+    pasang(isi, H`<h2>${D.header.judul || "Portal Kontrak & Korespondensi"}</h2>
+      <dl class="def" style="margin-top:10px"><dt>Versi antarmuka</dt><dd>${VERSI_KLIEN}</dd>
+        <dt>Versi peladen</dt><dd>${D.versi}${D.versi !== VERSI_KLIEN ? H` ${pil("berbeda", "merah")}` : ""}</dd>
+        <dt>Mode</dt><dd>${MODE === "gas" ? "Web App Apps Script" : "Aplikasi terpasang (PWA)"}</dd>
+        <dt>Lisensi</dt><dd>${D.lisensi.uji ? "Uji coba" : D.lisensi.paket}${D.lisensi.modePembaca ? " \xB7 mode baca" : ""}</dd>
+        <dt>Naskah syarat & privasi</dt><dd>versi ${D.naskahVersi}${st[0] ? " \xB7 Anda membacanya " + fmtWaktu(st[1]) : ""}</dd>
+        <dt>Data per</dt><dd>${fmtWaktu(S.waktuData)}</dd>
+        ${L2.penyedia ? H`<dt>Penyedia</dt><dd>${L2.penyedia}</dd>` : ""}${L2.kontakDukungan ? H`<dt>Dukungan</dt><dd>${L2.kontakDukungan}</dd>` : ""}</dl>
+      ${D.urlVerifikasi && S.saya.peran === "SUPER_ADMIN" ? H`<p><a href="${D.urlVerifikasi}?cek=1" target="_blank" rel="noopener">Buka pemeriksaan pemasangan (?cek=1)</a></p>` : ""}
+      <p class="kecil">Aplikasi ini adalah register dan alur kerja internal. Sidik isi, jejak audit berantai, dan QR verifikasi membantu membuktikan bahwa isi register tidak berubah sejak disetujui. Aplikasi ini <b>bukan</b> Penyelenggara Sertifikasi Elektronik dan tidak terhubung ke BSrE, Peruri, atau PrivyID.</p>
+      <h3 style="margin-top:14px">Riwayat perubahan</h3>${riwayatHtml()}`);
+  } else if (S.subTentang === "sumber") {
+    pasang(isi, H`<h2>Komponen pihak ketiga</h2><div class="naskah">
+      <h3>Leaflet 1.9.4</h3><p class="kecil">\u00a9 2010-2023 Volodymyr Agafonkin, \u00a9 2010-2011 CloudMade. Lisensi BSD-2-Clause.</p>
+      <pre class="lisensi">${TEKS_BSD2}</pre>
+      <h3>qrcode-generator 1.4.4</h3><p class="kecil">\u00a9 2009 Kazuhiko Arase. Lisensi MIT. \u201cQR Code\u201d adalah merek dagang terdaftar DENSO WAVE INCORPORATED.</p>
+      <pre class="lisensi">${TEKS_MIT}</pre>
+      <h3>Data & ubin peta (opsional)</h3><ul class="kecil"><li>\u00a9 kontributor OpenStreetMap \u2014 data berlisensi ODbL.</li><li>Citra satelit \u00a9 Esri, Maxar, Earthstar Geographics \u2014 tunduk ketentuan layanan Esri.</li>
+      <li>OpenTopoMap \u2014 ubin CC-BY-SA; data OSM & SRTM.</li></ul>
+      <p class="kecil redup">Huruf yang dipakai adalah huruf bawaan perangkat; aplikasi tidak memuat huruf atau skrip dari CDN.</p></div>`);
+  } else {
+    pasang(isi, H`${S.saya.peran === "SUPER_ADMIN" && (!L2.penyedia || !L2.kontakPrivasi) ? H`<div class="pita amber kecil">Beberapa isian naskah belum dilengkapi. Isi di Setelan &gt; Syarat & privasi.</div>` : ""}
+      <h2>${NASKAH[S.subTentang].judul}</h2>${naskahHtml(S.subTentang, L2, D.header, D.naskahVersi, L2.berlakuSejak)}`);
+  }
+}
+KLIK.subTentang = function(t) {
+  S.subTentang = t.getAttribute("data-t");
+  render();
+};
+function sLegal(el) {
+  var L2 = S.data.legal || {};
+  pasang(el, H`<form class="kartu" id="fLegal" novalidate><h2>Syarat & privasi</h2>
+    <div class="pita amber kecil">Naskah Syarat & Ketentuan dan Pemberitahuan Privasi adalah templat yang disusun pengembang berdasarkan cara kerja aplikasi ini, <b>bukan nasihat hukum</b>. Tinjau bersama penasihat hukum atau pejabat pelindungan data Instansi sebelum dipakai resmi.</div>
+    <p class="kecil redup">Isian di bawah menggantikan penanda di naskah. Nama Instansi diambil dari Kop & tampilan (${S.data.header.entitas || "belum diisi"}).</p>
+    <div class="grid2">
+      <label class="ruas"><span>Nama penyedia perangkat lunak</span><input name="penyedia" type="text" maxlength="200" value="${L2.penyedia || ""}"></label>
+      <label class="ruas"><span>Alamat penyedia</span><input name="alamatPenyedia" type="text" maxlength="300" value="${L2.alamatPenyedia || ""}"></label>
+      <label class="ruas"><span>Kontak dukungan</span><input name="kontakDukungan" type="text" maxlength="200" value="${L2.kontakDukungan || ""}" placeholder="surel / WhatsApp"></label>
+      <label class="ruas"><span>Kontak privasi / pejabat pelindungan data</span><input name="kontakPrivasi" type="text" maxlength="200" value="${L2.kontakPrivasi || ""}" placeholder="mis. privasi@instansi.co.id"></label>
+      <label class="ruas"><span>Berlaku sejak</span><input name="berlakuSejak" type="date" value="${L2.berlakuSejak || ""}"></label></div>
+    <p class="kecil redup">Versi naskah saat ini: <b>${S.data.naskahVersi}</b>. Mengubah isian di sini tidak meminta pengguna membaca ulang; permintaan baca ulang terjadi bila versi naskah di aplikasi berubah.</p>
+    <div class="baris"><button class="tombol utama" type="submit" ${kunciRo() ? raw("disabled") : ""}>Simpan</button>
+      <button class="tombol" type="button" data-klik="bukaSyarat">Pratinjau syarat</button><button class="tombol" type="button" data-klik="bukaPrivasi">Pratinjau privasi</button></div></form>`);
+  var f = $("#fLegal");
+  f.onsubmit = function(e) {
+    e.preventDefault();
+    api("setelan_legal", ambilForm(f)).then(function(v) {
+      S.data.legal = v;
+      simpanCache_();
+      toast("Disimpan.", "baik");
+      render();
+    }).catch(galat);
+  };
+}
+var TEKS_BSD2 = 'Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.';
+var TEKS_MIT = 'Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.';
 if ('serviceWorker' in navigator) window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
 mulai();
-/* CCMS-AKHIR 1.1.0 */
+/* CCMS-AKHIR 1.2.0 */
 </script>
 </body>
 </html>
